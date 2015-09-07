@@ -31,6 +31,8 @@ import javax.jws.WebParam;
 @WebService(serviceName = "SERVICIO")
 public class SERVICIO {
     
+    //ESTE ES EL MERO SERVICIO PARA EL PRO1 DE EDD
+    
     AdminTree administradores;
     ClavesTree EstacionesClaves;
     GeneralesTree EstacionesGenerales;
