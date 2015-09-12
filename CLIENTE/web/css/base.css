@@ -1,0 +1,39 @@
+.header{
+    
+    background-color: #000000;
+    color: #fff;
+    height: 40px;
+}
+
+.bottom
+{
+    background-color: #ddd;
+    height: 20px;
+    padding: 10px;
+    text-align: center;
+}
+.content{
+    padding: 20px;
+}
+.menu{
+    margin-top: 10px;
+}
+.divmenu{
+    
+    //margin: 0 auto;
+    margin-left: 35%;
+    
+   
+    
+}
+.divformindex{
+    
+    //margin: 0 auto;
+    height: 30%;
+    width:  25%;
+    margin-left: 35%;
+    
+   
+    
+}
+

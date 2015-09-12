@@ -1,0 +1,10 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<div>
+    <div class="header">
+        PROYECTO 1 EDD
+       
+    </div>
+    <div class="content">
+        
+    
