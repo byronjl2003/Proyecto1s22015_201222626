@@ -11,36 +11,45 @@ import com.ArbolChoferes.LBuses;
 import com.ArbolChoferes.LRutas;
 import com.Estaciones.ClavesTree;
 import com.Estaciones.GeneralesTree;
+import java.awt.Image;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.Resource;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
+import javax.xml.ws.BindingType;
+import javax.xml.ws.WebServiceContext;
 
 /**
  *
  * @author byron
  */
 @WebService(serviceName = "SERVICIO")
+
 public class SERVICIO {
     
     //ESTE ES EL MERO SERVICIO PARA EL PRO1 DE EDD
     
-    AdminTree administradores;
-    ClavesTree EstacionesClaves;
-    GeneralesTree EstacionesGenerales;
-    ChoferesTree choferes;
-    LBuses buses;
-    LRutas rutas;
+    AdminTree administradores = new AdminTree();
+    ClavesTree EstacionesClaves = new ClavesTree();
+    GeneralesTree EstacionesGenerales = new GeneralesTree();
+    ChoferesTree choferes = new ChoferesTree();
+    LBuses buses = new LBuses();
+    LRutas rutas = new LRutas();
     
     
+    
+    /*
     public SERVICIO()
     {
         this.administradores = new AdminTree();
@@ -48,8 +57,9 @@ public class SERVICIO {
         this.EstacionesGenerales = new GeneralesTree();
         buses = new LBuses();
         rutas = new LRutas();
-        this.administradores.agregar("ADMIN@ADMIN","ADMIN");
+        
     }
+    */
     
     
 
@@ -93,6 +103,7 @@ public class SERVICIO {
         if(tipo.equals("ADMINISTRADOR"))
         {
             return this.administradores.BuscarParaLogin(id, pass,this.administradores.raiz);
+            //return"HOLA";
         }
         else if(tipo.equals("CLAVE"))
         {
@@ -160,6 +171,46 @@ public class SERVICIO {
     public String AddRuta(@WebParam(name = "nombre") String nombre, @WebParam(name = "esta") String esta) {
         
         return this.rutas.Add(nombre, esta);
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "TraerAdmins")
+    public String TraerAdmins() {
+        //TODO write your implementation code here:
+        return this.administradores.GetAdministradores(this.administradores.raiz);
+        //return "DESDE SERVIDOR/TraerAdmins";
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "getImage")
+    public byte[] getImage(@WebParam(name = "codigo") String codigo) throws FileNotFoundException  {
+         //wsContext.getMessageContext().put(com.sun.xml.ws.developer.JAXWSProperties.MTOM_THRESHOLOD_VALUE,0);
+        // TODO implement operation 
+        //TODO write your implementation code here:
+       File file = new File("C:\\Users\\byron\\Desktop\\pantallaso.png");
+ 
+        FileInputStream fis = new FileInputStream(file);
+        //create FileInputStream which obtains input bytes from a file in a file system
+        //FileInputStream is meant for reading streams of raw bytes such as image data. For reading streams of characters, consider using FileReader.
+ 
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        byte[] buf = new byte[1024];
+        try {
+            for (int readNum; (readNum = fis.read(buf)) != -1;) {
+                //Writes to this byte array output stream
+                bos.write(buf, 0, readNum); 
+                System.out.println("read " + readNum + " bytes,");
+            }
+        } catch (IOException ex) {
+            //Logger.getLogger(ConvertImage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+ 
+        byte[] bytes = bos.toByteArray();
+        return bytes;
     }
 
 

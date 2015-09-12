@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://servicios.com/" xmlns:tns="http://servicios.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="AddAdmins" nillable="true" type="tns:addAdmins"/>
+
+  <xs:element name="AddAdminsResponse" nillable="true" type="tns:addAdminsResponse"/>
+
+  <xs:element name="AddBus" nillable="true" type="tns:addBus"/>
+
+  <xs:element name="AddBusResponse" nillable="true" type="tns:addBusResponse"/>
+
+  <xs:element name="AddChofer" nillable="true" type="tns:addChofer"/>
+
+  <xs:element name="AddChoferResponse" nillable="true" type="tns:addChoferResponse"/>
+
+  <xs:element name="AddClave" nillable="true" type="tns:addClave"/>
+
+  <xs:element name="AddClaveResponse" nillable="true" type="tns:addClaveResponse"/>
+
+  <xs:element name="AddGeneral" nillable="true" type="tns:addGeneral"/>
+
+  <xs:element name="AddGeneralResponse" nillable="true" type="tns:addGeneralResponse"/>
+
+  <xs:element name="AddRuta" nillable="true" type="tns:addRuta"/>
+
+  <xs:element name="AddRutaResponse" nillable="true" type="tns:addRutaResponse"/>
+
+  <xs:element name="Loguin" nillable="true" type="tns:loguin"/>
+
+  <xs:element name="LoguinResponse" nillable="true" type="tns:loguinResponse"/>
+
+  <xs:element name="TraerAdmins" nillable="true" type="tns:traerAdmins"/>
+
+  <xs:element name="TraerAdminsResponse" nillable="true" type="tns:traerAdminsResponse"/>
+
+  <xs:element name="TraerImagen" nillable="true" type="tns:traerImagen"/>
+
+  <xs:element name="TraerImagenResponse" nillable="true" type="tns:traerImagenResponse"/>
+
+  <xs:element name="getImage" nillable="true" type="tns:getImage"/>
+
+  <xs:element name="getImageResponse" nillable="true" type="tns:getImageResponse"/>
+
+  <xs:element name="hello" nillable="true" type="tns:hello"/>
+
+  <xs:element name="helloResponse" nillable="true" type="tns:helloResponse"/>
+
+  <xs:complexType name="addClave">
+    <xs:sequence>
+      <xs:element name="id" type="xs:string" minOccurs="0"/>
+      <xs:element name="nombre" type="xs:string" minOccurs="0"/>
+      <xs:element name="pass" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addClaveResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="hello">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="helloResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getImage">
+    <xs:sequence>
+      <xs:element name="codigo" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getImageResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:base64Binary" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addAdmins">
+    <xs:sequence>
+      <xs:element name="email" type="xs:string" minOccurs="0"/>
+      <xs:element name="pass" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addAdminsResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addRuta">
+    <xs:sequence>
+      <xs:element name="esta" type="xs:string" minOccurs="0"/>
+      <xs:element name="nombre" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addRutaResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addGeneral">
+    <xs:sequence>
+      <xs:element name="id" type="xs:string" minOccurs="0"/>
+      <xs:element name="nombre" type="xs:string" minOccurs="0"/>
+      <xs:element name="pass" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addGeneralResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addChofer">
+    <xs:sequence>
+      <xs:element name="apellido" type="xs:string" minOccurs="0"/>
+      <xs:element name="id" type="xs:string" minOccurs="0"/>
+      <xs:element name="nombre" type="xs:string" minOccurs="0"/>
+      <xs:element name="pass" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addChoferResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addBus">
+    <xs:sequence>
+      <xs:element name="numbus" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addBusResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="traerAdmins">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="traerAdminsResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="traerImagen">
+    <xs:sequence>
+      <xs:element name="tipoimg" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="traerImagenResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:base64Binary" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="loguin">
+    <xs:sequence>
+      <xs:element name="id" type="xs:string" minOccurs="0"/>
+      <xs:element name="pass" type="xs:string" minOccurs="0"/>
+      <xs:element name="tipo" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="loguinResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

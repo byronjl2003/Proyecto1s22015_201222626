@@ -19,9 +19,26 @@ public class AdminTree {
         public AdminTree()
         {
             this.raiz = null;
+            this.agregar("HOLA","ADMIN");
+            this.agregar("LULA","TATULA");
             
         }
-
+        public String GetAdministradores(ABBE raiz)
+        {
+            StringBuilder cons = new StringBuilder();
+            if(raiz!=null)
+            {
+                
+                cons.append(GetAdministradores(raiz.getIz()));
+                cons.append(raiz.getEmail()+","+raiz.getPass()+"]");
+                cons.append(GetAdministradores(raiz.getDer()));
+            }
+            return cons.toString();
+            
+            
+            
+            
+        }
         public String agregar(String email, String pass)
         {
             if(this.raiz==null)
@@ -118,7 +135,7 @@ public class AdminTree {
         
         public int Comparador(String comparado, String comparador)
         {
-             System.out.println("COMPARADO: "+comparado+",,,, COMPARADOR: "+comparador);
+             //System.out.println("COMPARADO: "+comparado+",,,, COMPARADOR: "+comparador);
              int resp = -10;
              try
              {
@@ -126,18 +143,18 @@ public class AdminTree {
                  int COMPARADOR = Integer.valueOf(comparador);
                  if(COMPARADOR>COMPARADO)//raiz es mayor que entrada
                  {
-                     System.out.println("RAIZ ES MAYOR QUE ENTRADA");
+                     //System.out.println("RAIZ ES MAYOR QUE ENTRADA");
                      return -1;
                  }
                      
                  else if(COMPARADOR<COMPARADO)
                  {
-                     System.out.println("RAIZ ES MENOR QUE ENTRADA");
+                     //System.out.println("RAIZ ES MENOR QUE ENTRADA");
                      return 1;
                  }
                  else
                  {
-                     System.out.println("SON IGUALES");
+                     //System.out.println("SON IGUALES");
                      return 0;
                  }
                      
