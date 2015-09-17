@@ -23,6 +23,45 @@ public class AdminTree {
             this.agregar("LULA","TATULA");
             
         }
+        
+        public String ModificarAdmin(String old,String email,String pass)
+        {
+            if(old.equals(email)||email.equals(""))
+            {
+                // no hay cambio
+                ABBE modificado = search(old,this.raiz);
+                if(modificado!=null)
+                {
+                    modificado.setPass(pass);
+                    return "Modificado facil";
+                }
+                else
+                    return "EN MODIFICAR NO SE ENCONTRO PARA MODIFICAR PASS";
+                
+            }
+            else
+            {
+                //si hubo cambio de id
+                this.Eliminar(old);
+                this.agregar(email, pass);
+                return "EN MODIFICAR DIFICIL";
+                
+            }
+        }
+        private ABBE search(String email,ABBE raiz)
+        {
+            if(raiz==null)
+                return null;
+            else
+            {
+                if (this.Comparador(email,raiz.getEmail()) < 0)
+                    return search(email,raiz.getIz());
+                else if (this.Comparador(email,raiz.getEmail()) > 0)
+                    return search(email,raiz.getDer());
+                else
+                    return raiz;
+            }
+        }
         public String GetAdministradores(ABBE raiz)
         {
             StringBuilder cons = new StringBuilder();
@@ -179,64 +218,19 @@ public class AdminTree {
              {
                  
              }
-             /*
-             int resp = -10;
-             for(int i = 0;i<comparado.length();i++)
-             {
-                 if(comparador.length()-1>=i)
-                 {
-                     if(comparado.charAt(i)<comparador.charAt(i))
-                    {
-                        System.out.println("ES MENOR EL INGRESADO");
-                        resp= -1;
-                    }
-                    else if(comparado.charAt(i)>comparador.charAt(i))
-                    {
-                        System.out.println("ES MAYOR EL INGRESADO");
-                        resp = 1;
-                    }
-                     
-                 }
-                 
-                     
-                 
-             }
-             if(comparador.length()==comparado.length())
-             {
-                 System.out.println("ESTA RETORNANDO RESP");
-                 return resp;
-             }
-                 
-             else if(comparador.length()>comparado.length())
-             {
-                 System.out.println("ESTA RETORNANDO -1");
-                 return -1;
-             }
-                 
-             else if(comparador.length()<comparado.length())
-             {
-                 System.out.println("ESTA RETORNANDO 1");
-                 return 1;
-             }
-             else
-             {
-                 System.out.println("ESTA RETORNANDO 0");
-                 return 0;
-             }
              
-             */
-             //return 0;
          }
         
     public String BuscarParaLogin(String email,String pass,ABBE raiz)
     {
+        System.out.println("BuscarParaLogin: id="+email+" pass= "+pass);
         if(raiz==null)
             return "0,ERROR NO EXISTE";
         else
         {
             if (this.Comparador(email,raiz.getEmail()) < 0)
                 return BuscarParaLogin(email,pass,raiz.getIz());
-            else if (this.Comparador(email,raiz.getEmail()) < 0)
+            else if (this.Comparador(email,raiz.getEmail()) > 0)
                 return BuscarParaLogin(email,pass,raiz.getDer());
             else
             {
@@ -429,6 +423,7 @@ public class AdminTree {
 
           public void Graficar(ABBE raiz)
           {
+              System.out.println("EN GRAFICAR ARBOL ADMINS");
               StringBuilder colector = new StringBuilder();
               colector.append("digraph{\n");
               colector.append("node[shape=record]\n");
@@ -445,7 +440,7 @@ public class AdminTree {
             
             try
             {
-                fichero = new FileWriter("C:\\Users\\byron\\Desktop\\GraficasAVLS\\avladmin.dot");
+                fichero = new FileWriter("C:\\Users\\byron\\Documents\\NetBeansProjects\\Proyecto1s22015_201222626\\SERVIDOR\\build\\web\\resources\\avladmin.dot");
                 pw = new PrintWriter(fichero);
  
             
@@ -464,7 +459,7 @@ public class AdminTree {
                 }
                 catch (Exception e2)
                 {
-                    e2.printStackTrace();
+                    System.out.println(e2.getMessage());
                 }
            
            //....GENERACION CON DOT
@@ -477,12 +472,12 @@ public class AdminTree {
 			 * en la linea de comandos esto es: 
 			 * dot -Tpng -o archivo.png archivo.dot
 			 */
-			pbuilder = new ProcessBuilder( "dot", "-Tpng", "-o", "C:\\Users\\byron\\Desktop\\GraficasAVLS\\avladmin.png", "C:\\Users\\byron\\Desktop\\GraficasAVLS\\avladmin.dot" );
+			pbuilder = new ProcessBuilder( "dot", "-Tpng", "-o", "C:\\Users\\byron\\Documents\\NetBeansProjects\\Proyecto1s22015_201222626\\SERVIDOR\\build\\web\\resources\\avladmin.png", "C:\\Users\\byron\\Documents\\NetBeansProjects\\Proyecto1s22015_201222626\\SERVIDOR\\build\\web\\resources\\avladmin.dot" );
 			pbuilder.redirectErrorStream( true );
 			//Ejecuta el proceso
 			pbuilder.start();
 		    
-		} catch (Exception e) { e.printStackTrace(); }
+		} catch (Exception e) { System.out.println(e.getMessage()); }
         }
 
 

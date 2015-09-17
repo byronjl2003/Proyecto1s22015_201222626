@@ -21,6 +21,63 @@ public class GeneralesTree {
             this.raiz = null;
             
         }
+        
+        public String ModificarGenerales(String old,String id,String pass,String nombre)
+        {
+            if(old.equals(id)||id.equals(""))
+            {
+                // no hay cambio
+                ABBEesta modificado = search(old,this.raiz);
+                if(modificado!=null)
+                {
+                    modificado.setPass(pass);
+                    modificado.setNombre(nombre);
+                    return "Modificado facil";
+                }
+                else
+                    return "EN MODIFICAR NO SE ENCONTRO PARA MODIFICAR PASS";
+                
+            }
+            else
+            {
+                //si hubo cambio de id
+                this.Eliminar(old);
+                this.agregar(id, pass,nombre,1);
+                return "EN MODIFICAR DIFICIL";
+                
+            }
+        }
+        private ABBEesta search(String id,ABBEesta raiz)
+        {
+            if(raiz==null)
+                return null;
+            else
+            {
+                if (this.Comparador(id,raiz.getID()) < 0)
+                    return search(id,raiz.getIz());
+                else if (this.Comparador(id,raiz.getID()) > 0)
+                    return search(id,raiz.getDer());
+                else
+                    return raiz;
+            }
+        }
+        
+        public String GetGenerales(ABBEesta raiz)
+        {
+            StringBuilder cons = new StringBuilder();
+            if(raiz!=null)
+            {
+                
+                cons.append(GetGenerales(raiz.getIz()));
+                cons.append(raiz.getID()+","+raiz.getPass()+","+raiz.getNombre()+"]");
+                cons.append(GetGenerales(raiz.getDer()));
+            }
+            return cons.toString();
+            
+            
+            
+            
+        }
     
     public String BuscarParaLogin(String id,String pass,ABBEesta raiz)
         {
@@ -383,7 +440,7 @@ public class GeneralesTree {
             
             try
             {
-                fichero = new FileWriter("C:\\Users\\byron\\Desktop\\GraficasAVLS\\avlgenerales.dot");
+                fichero = new FileWriter("C:\\Users\\byron\\Documents\\NetBeansProjects\\Proyecto1s22015_201222626\\SERVIDOR\\build\\web\\resources\\avlgenerales.dot");
                 pw = new PrintWriter(fichero);
  
             
@@ -415,7 +472,7 @@ public class GeneralesTree {
 			 * en la linea de comandos esto es: 
 			 * dot -Tpng -o archivo.png archivo.dot
 			 */
-			pbuilder = new ProcessBuilder( "dot", "-Tpng", "-o", "C:\\Users\\byron\\Desktop\\GraficasAVLS\\avlgenerales.png", "C:\\Users\\byron\\Desktop\\GraficasAVLS\\avlgenerales.dot" );
+			pbuilder = new ProcessBuilder( "dot", "-Tpng", "-o", "C:\\Users\\byron\\Documents\\NetBeansProjects\\Proyecto1s22015_201222626\\SERVIDOR\\build\\web\\resources\\avlgenerales.png", "C:\\Users\\byron\\Documents\\NetBeansProjects\\Proyecto1s22015_201222626\\SERVIDOR\\build\\web\\resources\\avlgenerales.dot" );
 			pbuilder.redirectErrorStream( true );
 			//Ejecuta el proceso
 			pbuilder.start();

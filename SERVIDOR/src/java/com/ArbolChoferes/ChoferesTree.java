@@ -22,6 +22,64 @@ public class ChoferesTree {
             
         }
         
+        public String ModificarChofer(String old,String id,String pass,String nombre,String apellido)
+        {
+            if(old.equals(id)||id.equals(""))
+            {
+                // no hay cambio
+                ABBE modificado = search(old,this.raiz);
+                if(modificado!=null)
+                {
+                    modificado.setPass(pass);
+                    modificado.setApellido(apellido);
+                    modificado.setNombre(nombre);
+                    return "Modificado facil";
+                }
+                else
+                    return "EN MODIFICAR NO SE ENCONTRO PARA MODIFICAR PASS";
+                
+            }
+            else
+            {
+                //si hubo cambio de id
+                this.Eliminar(old);
+                this.agregar(id, pass,nombre,apellido);
+                return "EN MODIFICAR DIFICIL";
+                
+            }
+        }
+        private ABBE search(String id,ABBE raiz)
+        {
+            if(raiz==null)
+                return null;
+            else
+            {
+                if (this.Comparador(id,raiz.getID()) < 0)
+                    return search(id,raiz.getIz());
+                else if (this.Comparador(id,raiz.getID()) > 0)
+                    return search(id,raiz.getDer());
+                else
+                    return raiz;
+            }
+        }
+        
+        public String GetChoferes(ABBE raiz)
+        {
+            StringBuilder cons = new StringBuilder();
+            if(raiz!=null)
+            {
+                
+                cons.append(GetChoferes(raiz.getIz()));
+                cons.append(raiz.getID()+","+raiz.getPass()+","+raiz.getNombre()+","+raiz.getApellido()+"]");
+                cons.append(GetChoferes(raiz.getDer()));
+            }
+            return cons.toString();
+            
+            
+            
+            
+        }
+        
         public String BuscarParaLogin(String id,String pass,ABBE raiz)
     {
         if(raiz==null)
@@ -384,7 +442,7 @@ public class ChoferesTree {
             
             try
             {
-                fichero = new FileWriter("C:\\Users\\byron\\Desktop\\GraficasAVLS\\avlchofer.dot");
+                fichero = new FileWriter("C:\\Users\\byron\\Documents\\NetBeansProjects\\Proyecto1s22015_201222626\\SERVIDOR\\build\\web\\resources\\avlchoferes.dot");
                 pw = new PrintWriter(fichero);
  
             
@@ -416,7 +474,7 @@ public class ChoferesTree {
 			 * en la linea de comandos esto es: 
 			 * dot -Tpng -o archivo.png archivo.dot
 			 */
-			pbuilder = new ProcessBuilder( "dot", "-Tpng", "-o", "C:\\Users\\byron\\Desktop\\GraficasAVLS\\avlchofer.png", "C:\\Users\\byron\\Desktop\\GraficasAVLS\\avlchofer.dot" );
+			pbuilder = new ProcessBuilder( "dot", "-Tpng", "-o", "C:\\Users\\byron\\Documents\\NetBeansProjects\\Proyecto1s22015_201222626\\SERVIDOR\\build\\web\\resources\\avlchoferes.png", "C:\\Users\\byron\\Documents\\NetBeansProjects\\Proyecto1s22015_201222626\\SERVIDOR\\build\\web\\resources\\avlchoferes.dot" );
 			pbuilder.redirectErrorStream( true );
 			//Ejecuta el proceso
 			pbuilder.start();

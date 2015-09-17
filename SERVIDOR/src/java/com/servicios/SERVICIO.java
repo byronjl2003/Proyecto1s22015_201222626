@@ -66,6 +66,31 @@ public class SERVICIO {
     /**
      * This is a sample web service operation
      */
+    
+    @WebMethod(operationName = "ModificarAdmin")
+    public String ModificarAdmin(@WebParam(name = "old") String old,@WebParam(name = "email") String email,@WebParam(name = "pass") String pass) {
+        //TODO write your implementation code here:
+        return this.administradores.ModificarAdmin(old,email,pass);
+        //return "DESDE SERVIDOR/TraerAdmins";
+    }
+    @WebMethod(operationName = "ModificarClave")
+    public String ModificarClave(@WebParam(name = "old") String old,@WebParam(name = "id") String id,@WebParam(name = "pass") String pass,@WebParam(name = "nombre") String nombre) {
+        //TODO write your implementation code here:
+        return this.EstacionesClaves.ModificarClaves(old, id, pass, nombre);
+        //return "DESDE SERVIDOR/TraerAdmins";
+    }
+    @WebMethod(operationName = "ModificarGeneral")
+    public String ModificarGeneral(@WebParam(name = "old") String old,@WebParam(name = "id") String id,@WebParam(name = "pass") String pass,@WebParam(name = "nombre") String nombre) {
+        //TODO write your implementation code here:
+        return this.EstacionesGenerales.ModificarGenerales(old, id, pass, nombre);
+        //return "DESDE SERVIDOR/TraerAdmins";
+    }
+    @WebMethod(operationName = "ModificarRuta")
+    public String ModificarRuta(@WebParam(name = "old") String old,@WebParam(name = "nombre") String nombre,@WebParam(name = "esta") String esta) {
+        //TODO write your implementation code here:
+        return this.rutas.ModificarRutas(old, nombre,esta);
+        //return "DESDE SERVIDOR/TraerAdmins";
+    }
     @WebMethod(operationName = "hello")
     public String hello(@WebParam(name = "name") String txt) {
         return "Hello " + txt + " !";
@@ -182,6 +207,39 @@ public class SERVICIO {
         return this.administradores.GetAdministradores(this.administradores.raiz);
         //return "DESDE SERVIDOR/TraerAdmins";
     }
+    
+    @WebMethod(operationName = "TraerGenerales")
+    public String TraerGenerales() {
+        //TODO write your implementation code here:
+        return this.EstacionesGenerales.GetGenerales(this.EstacionesGenerales.raiz);
+        //return "DESDE SERVIDOR/TraerAdmins";
+    }
+    @WebMethod(operationName = "TraerClaves")
+    public String TraerClaves() {
+        //TODO write your implementation code here:
+        return this.EstacionesClaves.GetClaves(this.EstacionesClaves.raiz);
+        //return "DESDE SERVIDOR/TraerAdmins";
+    }
+    @WebMethod(operationName = "TraerRutas")
+    public String TraerRutas() {
+        //TODO write your implementation code here:
+        return this.rutas.GetRutas();
+        //return "DESDE SERVIDOR/TraerAdmins";
+    }
+    
+    @WebMethod(operationName = "TraerBuses")
+    public String TraerBuses() {
+        //TODO write your implementation code here:
+        return this.buses.GetBuses();
+        //return "DESDE SERVIDOR/TraerAdmins";
+    }
+    
+    @WebMethod(operationName = "TraerChoferes")
+    public String TraerChoferes() {
+        //TODO write your implementation code here:
+        return this.choferes.GetChoferes(this.choferes.raiz);
+        //return "DESDE SERVIDOR/TraerAdmins";
+    }
 
     /**
      * Web service operation
@@ -211,6 +269,87 @@ public class SERVICIO {
  
         byte[] bytes = bos.toByteArray();
         return bytes;
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "Eliminar")
+    public int Eliminar(@WebParam(name = "tipo") String tipo , @WebParam(name = "id") String id) {
+        if(tipo.equals("ADMIN"))
+        {
+            this.administradores.Eliminar(id);
+            return  1;
+        }
+        else if(tipo.equals("CLAVE"))
+        {
+            this.EstacionesClaves.Eliminar(id);
+            return  1;
+        }
+        else if(tipo.equals("GENERAL"))
+        {
+            this.EstacionesGenerales.Eliminar(id);
+            return  1;
+        }
+        else if(tipo.equals("CHOFER"))
+        {
+            this.choferes.Eliminar(id);
+            return  1;
+        }
+        else if(tipo.equals("BUS"))
+        {
+            int numbus = Integer.valueOf(id);
+            this.buses.EliminarDeLista(numbus);
+            return  1;
+        }
+        else if(tipo.equals("RUTA"))
+        {
+            this.rutas.EliminarDeLista(id);;
+            return  1;
+        }
+        else
+        {
+            return 0;
+        }
+        
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "Graficar")
+    public String Graficar(@WebParam(name = "grafica") String grafica) {
+        if(grafica.equals("ADMINS"))
+        {
+            //System.out.println("EN EL SERVICIO ENTRE QUE EL PARAMETRO ES ADMINS");
+            this.administradores.Graficar(this.administradores.raiz);
+            System.out.println();
+            return"http://localhost:8080/SERVIDOR/resources/avladmins.png";
+        }
+        else if(grafica.equals("CLAVES"))
+        {
+            //System.out.println("EN EL SERVICIO ENTRE QUE EL PARAMETRO ES ADMINS");
+            this.administradores.Graficar(this.administradores.raiz);
+            System.out.println();
+            return"http://localhost:8080/SERVIDOR/resources/avlclaves.png";
+        }
+        else if(grafica.equals("GENERALES"))
+        {
+            //System.out.println("EN EL SERVICIO ENTRE QUE EL PARAMETRO ES ADMINS");
+            this.administradores.Graficar(this.administradores.raiz);
+            System.out.println();
+            return"http://localhost:8080/SERVIDOR/resources/avlgenerales.png";
+        }
+        else if(grafica.equals("CHOFERES"))
+        {
+            //System.out.println("EN EL SERVICIO ENTRE QUE EL PARAMETRO ES ADMINS");
+            this.administradores.Graficar(this.administradores.raiz);
+            System.out.println();
+            return"http://localhost:8080/SERVIDOR/resources/avlchoferes.png";
+        }
+        else
+            return "";
+        
     }
 
 

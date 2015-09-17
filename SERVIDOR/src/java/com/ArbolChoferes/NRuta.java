@@ -31,6 +31,12 @@ public class NRuta {
         }
         
     }
+    public String getRuta()
+    {
+        return  this.getNombre()+":["+this.estaciones.getEstaciones()+"]";
+        
+        
+    }
 
     /**
      * @return the nombre
@@ -54,6 +60,8 @@ public class NRuta {
     /**
      * @return the estaciones
      */
+    
+   
     public LEstaciones getEstaciones() {
         return estaciones;
     }
@@ -116,7 +124,21 @@ public class NRuta {
         {
             return this.getPrimero()==null;
         }
-   
+        public String getEstaciones()
+        {
+            String resp = "";
+            NEstacion aux = this.primero;
+            while(aux!=null)
+            {
+                if(aux.getNext()==null)
+                    resp = resp+aux.getIdestacion();
+                else
+                    resp = resp+aux.getIdestacion()+",";
+                aux = aux.getNext();
+            }
+            
+            return resp;
+        }
         public void Add(String id, int tipo)
         {
             if(Vacia())

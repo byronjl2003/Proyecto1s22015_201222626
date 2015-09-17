@@ -18,6 +18,30 @@ public class LRutas {
         this.primero= this.ultimo = null;
         
     }
+    
+    public String ModificarRutas(String old,String nombre,String esta)
+    {
+        NRuta ruta = Buscar(old);
+        ruta = new NRuta(nombre,esta);
+        return "SE MODIFICO LA RUTA";        
+    }
+    
+    
+    public String GetRutas()
+    {
+        StringBuilder cons = new StringBuilder();
+        NRuta aux = this.primero;
+        while(aux!=null)
+        {
+            cons.append(aux.getRuta()+";");
+            aux = aux.getNext();
+        }
+        return cons.toString();
+            
+            
+            
+            
+    }
     private boolean Vacia()
     {
         return this.getPrimero()==null;
@@ -55,6 +79,7 @@ public class LRutas {
             }
             else
             {
+                
                 this.setElementos(this.getElementos()+1);
                 getUltimo().setNext(new NRuta(nombre,esta));
                 getUltimo().getNext().setBack(getUltimo());
@@ -67,80 +92,46 @@ public class LRutas {
         
             
     }
+    public void EliminarDeLista(String  nombre)
+   {
+       NRuta aux = this.primero;
+       while(aux!=null)
+       {
+           if(aux.getNombre().equals(nombre))
+               break;
+           else
+               aux = aux.getNext();
+       }
+       if(aux!=null)
+       {
+           if(aux==this.primero)
+           {
+               if(this.primero.getNext()!=null)
+                   this.primero.getNext().setBack(null);
+               this.primero = this.primero.getNext();
+               this.setElementos(this.getElementos()-1);
+           
+       }
+       else if(aux==this.ultimo)
+       {
+           this.ultimo = this.ultimo.getBack();
+           this.ultimo.setNext(null);
+           this.setElementos(this.getElementos()-1);
+       }
+       else
+       {
+           aux.getBack().setNext(aux.getNext());
+           aux.getNext().setBack(aux.getBack());
+           this.setElementos(this.getElementos()-1);
+       }
+           
+       }
+       
+       
+   }
     
 
- /*
-    public void Graficar()
-    {
-        System.out.println("EN GRAFICAR DE LA LISTA");
-        StringBuilder constructor  = new StringBuilder();
-        constructor.append("digraph g{ \n");
-        constructor.append("node [shape = record ];\n");
-        encabezado de usuarios
-        NFecha aux = this.getPrimero();
-        while(aux!=null)
-        {
-            constructor.append(aux.ToStringEncabezado()+"\n");
-            aux = aux.getNext();
-        }
-        ralaciones entre usuarios
-        NFecha aux2 = this.getPrimero();
-        while(aux2!=null)
-        {
-            if(aux2.getNext()!=null)
-                constructor.append(aux2.ToString()+":f2 -> "+aux2.getNext().ToString()+":f0 ;\n");
-            if(aux2.getBack()!=null)
-                constructor.append(aux2.ToString()+":f0 -> "+aux2.getBack().ToString()+":f2 ;\n");
-            aux2 = aux2.getNext();
-        }
-       
-         se grafica los string en cada usuario
-        
-        
-        
-        constructor.append("\n }");
-        
-        
-        
-        
-        FileWriter fichero = null;
-        PrintWriter pw = null;
-        try
-        {
-            fichero = new FileWriter("C:\\Users\\byron\\Desktop\\GraficasAVLS\\LFechas.dot");
-            pw = new PrintWriter(fichero);
- 
-            
-                pw.println(constructor.toString());
- 
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-           try {
-            Nuevamente aprovechamos el finally para 
-            asegurarnos que se cierra el fichero.
-           if (null != fichero)
-              fichero.close();
-           } catch (Exception e2) {
-              e2.printStackTrace();
-           }
-          
-           try
-		{       
-			ProcessBuilder pbuilder;
-		    
-			
-			pbuilder = new ProcessBuilder( "dot", "-Tpng", "-o", "C:\\Users\\byron\\Desktop\\GraficasAVLS\\LFechas.png", "C:\\Users\\byron\\Desktop\\GraficasAVLS\\LFechas.dot" );
-			pbuilder.redirectErrorStream( true );
-			//Ejecuta el proceso
-			pbuilder.start();
-		    
-		} catch (Exception e) { e.printStackTrace(); }
-        }
-        
-        
-        
-    }*/
+
 
     
     public NRuta getPrimero() {

@@ -20,9 +20,14 @@ public class ABBEesta {
     private int _personas;
     private int tipo;
 
+    
+        
+    
+    
     /**
      * @return the _ID
      */
+    
     public String getID() {
         return _ID;
     }

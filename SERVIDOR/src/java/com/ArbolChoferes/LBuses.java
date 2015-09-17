@@ -23,6 +23,23 @@ public class LBuses {
         this.primero= this.ultimo = null;
         
     }
+    public String GetBuses()
+    {
+        StringBuilder cons = new StringBuilder();
+        NBus aux = this.primero;
+        while(aux!=null)
+        {
+            
+            cons.append(aux.getNumBus()+","+aux.getPersonas()+"]");
+            aux = aux.getNext();
+        }
+        return cons.toString();
+            
+            
+            
+            
+    }
+   
     private boolean Vacia()
     {
         return this.getPrimero()==null;
@@ -96,7 +113,9 @@ public class LBuses {
            else
                aux = aux.getNext();
        }
-       if(aux==this.primero)
+       if(aux!=null)
+       {
+           if(aux==this.primero)
        {
            if(this.primero.getNext()!=null)
                this.primero.getNext().setBack(null);
@@ -116,6 +135,8 @@ public class LBuses {
            aux.getNext().setBack(aux.getBack());
            this.setElementos(this.getElementos()-1);
        }
+       }
+       
        
    }
     
