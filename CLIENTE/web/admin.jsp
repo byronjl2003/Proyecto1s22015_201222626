@@ -30,12 +30,12 @@
             <% request.setAttribute("nombre",request.getAttribute("RESPUESTA"));
                //request.setAttribute("tip","1");
             %>
-            <a href="Admin?tip=1" class="btn btn-default" role = "button">Administradores</a>
-            <a href="Admin?tip=imagenes" class="btn btn-default" role = "button">Est. Generales</a>
-            <a href="Admin?tip=3" class="btn btn-default" role = "button">Est. Clave</a>
-            <a href="Admin?tip=4" class="btn btn-default" role = "button">Buses</a>
-            <a href="Admin?tip=5" class="btn btn-default" role = "button">Rutas</a>
-            
+            <a href="Admin?tip=ADMIN" class="btn btn-default" role = "button">Administradores</a>
+            <a href="Admin?tip=GENERAL" class="btn btn-default" role = "button">Est. Generales</a>
+            <a href="Admin?tip=CLAVE" class="btn btn-default" role = "button">Est. Clave</a>
+            <a href="Admin?tip=BUS" class="btn btn-default" role = "button">Buses</a>
+            <a href="Admin?tip=RUTA" class="btn btn-default" role = "button">Rutas</a>
+            <a href="Admin?tip=GRAFICA" class="btn btn-default" role = "button">Graficas</a>
         </div>
         </div>    
         <div class="divmenu">

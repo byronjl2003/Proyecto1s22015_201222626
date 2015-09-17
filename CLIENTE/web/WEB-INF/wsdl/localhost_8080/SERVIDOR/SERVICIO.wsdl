@@ -4,41 +4,17 @@
 <xsd:import namespace="http://servicios.com/" schemaLocation="http://localhost:8080/SERVIDOR/SERVICIO?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="AddBus">
-<part name="parameters" element="tns:AddBus"/>
+<message name="TraerBuses">
+<part name="parameters" element="tns:TraerBuses"/>
 </message>
-<message name="AddBusResponse">
-<part name="parameters" element="tns:AddBusResponse"/>
-</message>
-<message name="Loguin">
-<part name="parameters" element="tns:Loguin"/>
-</message>
-<message name="LoguinResponse">
-<part name="parameters" element="tns:LoguinResponse"/>
-</message>
-<message name="AddRuta">
-<part name="parameters" element="tns:AddRuta"/>
-</message>
-<message name="AddRutaResponse">
-<part name="parameters" element="tns:AddRutaResponse"/>
-</message>
-<message name="AddClave">
-<part name="parameters" element="tns:AddClave"/>
-</message>
-<message name="AddClaveResponse">
-<part name="parameters" element="tns:AddClaveResponse"/>
+<message name="TraerBusesResponse">
+<part name="parameters" element="tns:TraerBusesResponse"/>
 </message>
 <message name="AddChofer">
 <part name="parameters" element="tns:AddChofer"/>
 </message>
 <message name="AddChoferResponse">
 <part name="parameters" element="tns:AddChoferResponse"/>
-</message>
-<message name="TraerAdmins">
-<part name="parameters" element="tns:TraerAdmins"/>
-</message>
-<message name="TraerAdminsResponse">
-<part name="parameters" element="tns:TraerAdminsResponse"/>
 </message>
 <message name="TraerImagen">
 <part name="parameters" element="tns:TraerImagen"/>
@@ -52,11 +28,23 @@
 <message name="AddGeneralResponse">
 <part name="parameters" element="tns:AddGeneralResponse"/>
 </message>
-<message name="AddAdmins">
-<part name="parameters" element="tns:AddAdmins"/>
+<message name="AddClave">
+<part name="parameters" element="tns:AddClave"/>
 </message>
-<message name="AddAdminsResponse">
-<part name="parameters" element="tns:AddAdminsResponse"/>
+<message name="AddClaveResponse">
+<part name="parameters" element="tns:AddClaveResponse"/>
+</message>
+<message name="Eliminar">
+<part name="parameters" element="tns:Eliminar"/>
+</message>
+<message name="EliminarResponse">
+<part name="parameters" element="tns:EliminarResponse"/>
+</message>
+<message name="AddRuta">
+<part name="parameters" element="tns:AddRuta"/>
+</message>
+<message name="AddRutaResponse">
+<part name="parameters" element="tns:AddRutaResponse"/>
 </message>
 <message name="getImage">
 <part name="parameters" element="tns:getImage"/>
@@ -64,36 +52,101 @@
 <message name="getImageResponse">
 <part name="parameters" element="tns:getImageResponse"/>
 </message>
+<message name="FileNotFoundException">
+<part name="fault" element="tns:FileNotFoundException"/>
+</message>
+<message name="AddAdmins">
+<part name="parameters" element="tns:AddAdmins"/>
+</message>
+<message name="AddAdminsResponse">
+<part name="parameters" element="tns:AddAdminsResponse"/>
+</message>
+<message name="Graficar">
+<part name="parameters" element="tns:Graficar"/>
+</message>
+<message name="GraficarResponse">
+<part name="parameters" element="tns:GraficarResponse"/>
+</message>
+<message name="TraerAdmins">
+<part name="parameters" element="tns:TraerAdmins"/>
+</message>
+<message name="TraerAdminsResponse">
+<part name="parameters" element="tns:TraerAdminsResponse"/>
+</message>
+<message name="AddBus">
+<part name="parameters" element="tns:AddBus"/>
+</message>
+<message name="AddBusResponse">
+<part name="parameters" element="tns:AddBusResponse"/>
+</message>
+<message name="Loguin">
+<part name="parameters" element="tns:Loguin"/>
+</message>
+<message name="LoguinResponse">
+<part name="parameters" element="tns:LoguinResponse"/>
+</message>
 <message name="hello">
 <part name="parameters" element="tns:hello"/>
 </message>
 <message name="helloResponse">
 <part name="parameters" element="tns:helloResponse"/>
 </message>
+<message name="ModificarRuta">
+<part name="parameters" element="tns:ModificarRuta"/>
+</message>
+<message name="ModificarRutaResponse">
+<part name="parameters" element="tns:ModificarRutaResponse"/>
+</message>
+<message name="ModificarClave">
+<part name="parameters" element="tns:ModificarClave"/>
+</message>
+<message name="ModificarClaveResponse">
+<part name="parameters" element="tns:ModificarClaveResponse"/>
+</message>
+<message name="ModificarGeneral">
+<part name="parameters" element="tns:ModificarGeneral"/>
+</message>
+<message name="ModificarGeneralResponse">
+<part name="parameters" element="tns:ModificarGeneralResponse"/>
+</message>
+<message name="TraerGenerales">
+<part name="parameters" element="tns:TraerGenerales"/>
+</message>
+<message name="TraerGeneralesResponse">
+<part name="parameters" element="tns:TraerGeneralesResponse"/>
+</message>
+<message name="TraerChoferes">
+<part name="parameters" element="tns:TraerChoferes"/>
+</message>
+<message name="TraerChoferesResponse">
+<part name="parameters" element="tns:TraerChoferesResponse"/>
+</message>
+<message name="ModificarAdmin">
+<part name="parameters" element="tns:ModificarAdmin"/>
+</message>
+<message name="ModificarAdminResponse">
+<part name="parameters" element="tns:ModificarAdminResponse"/>
+</message>
+<message name="TraerClaves">
+<part name="parameters" element="tns:TraerClaves"/>
+</message>
+<message name="TraerClavesResponse">
+<part name="parameters" element="tns:TraerClavesResponse"/>
+</message>
+<message name="TraerRutas">
+<part name="parameters" element="tns:TraerRutas"/>
+</message>
+<message name="TraerRutasResponse">
+<part name="parameters" element="tns:TraerRutasResponse"/>
+</message>
 <portType name="SERVICIO">
-<operation name="AddBus">
-<input wsam:Action="http://servicios.com/SERVICIO/AddBusRequest" message="tns:AddBus"/>
-<output wsam:Action="http://servicios.com/SERVICIO/AddBusResponse" message="tns:AddBusResponse"/>
-</operation>
-<operation name="Loguin">
-<input wsam:Action="http://servicios.com/SERVICIO/LoguinRequest" message="tns:Loguin"/>
-<output wsam:Action="http://servicios.com/SERVICIO/LoguinResponse" message="tns:LoguinResponse"/>
-</operation>
-<operation name="AddRuta">
-<input wsam:Action="http://servicios.com/SERVICIO/AddRutaRequest" message="tns:AddRuta"/>
-<output wsam:Action="http://servicios.com/SERVICIO/AddRutaResponse" message="tns:AddRutaResponse"/>
-</operation>
-<operation name="AddClave">
-<input wsam:Action="http://servicios.com/SERVICIO/AddClaveRequest" message="tns:AddClave"/>
-<output wsam:Action="http://servicios.com/SERVICIO/AddClaveResponse" message="tns:AddClaveResponse"/>
+<operation name="TraerBuses">
+<input wsam:Action="http://servicios.com/SERVICIO/TraerBusesRequest" message="tns:TraerBuses"/>
+<output wsam:Action="http://servicios.com/SERVICIO/TraerBusesResponse" message="tns:TraerBusesResponse"/>
 </operation>
 <operation name="AddChofer">
 <input wsam:Action="http://servicios.com/SERVICIO/AddChoferRequest" message="tns:AddChofer"/>
 <output wsam:Action="http://servicios.com/SERVICIO/AddChoferResponse" message="tns:AddChoferResponse"/>
-</operation>
-<operation name="TraerAdmins">
-<input wsam:Action="http://servicios.com/SERVICIO/TraerAdminsRequest" message="tns:TraerAdmins"/>
-<output wsam:Action="http://servicios.com/SERVICIO/TraerAdminsResponse" message="tns:TraerAdminsResponse"/>
 </operation>
 <operation name="TraerImagen">
 <input wsam:Action="http://servicios.com/SERVICIO/TraerImagenRequest" message="tns:TraerImagen"/>
@@ -103,49 +156,83 @@
 <input wsam:Action="http://servicios.com/SERVICIO/AddGeneralRequest" message="tns:AddGeneral"/>
 <output wsam:Action="http://servicios.com/SERVICIO/AddGeneralResponse" message="tns:AddGeneralResponse"/>
 </operation>
-<operation name="AddAdmins">
-<input wsam:Action="http://servicios.com/SERVICIO/AddAdminsRequest" message="tns:AddAdmins"/>
-<output wsam:Action="http://servicios.com/SERVICIO/AddAdminsResponse" message="tns:AddAdminsResponse"/>
+<operation name="AddClave">
+<input wsam:Action="http://servicios.com/SERVICIO/AddClaveRequest" message="tns:AddClave"/>
+<output wsam:Action="http://servicios.com/SERVICIO/AddClaveResponse" message="tns:AddClaveResponse"/>
+</operation>
+<operation name="Eliminar">
+<input wsam:Action="http://servicios.com/SERVICIO/EliminarRequest" message="tns:Eliminar"/>
+<output wsam:Action="http://servicios.com/SERVICIO/EliminarResponse" message="tns:EliminarResponse"/>
+</operation>
+<operation name="AddRuta">
+<input wsam:Action="http://servicios.com/SERVICIO/AddRutaRequest" message="tns:AddRuta"/>
+<output wsam:Action="http://servicios.com/SERVICIO/AddRutaResponse" message="tns:AddRutaResponse"/>
 </operation>
 <operation name="getImage">
 <input wsam:Action="http://servicios.com/SERVICIO/getImageRequest" message="tns:getImage"/>
 <output wsam:Action="http://servicios.com/SERVICIO/getImageResponse" message="tns:getImageResponse"/>
+<fault message="tns:FileNotFoundException" name="FileNotFoundException" wsam:Action="http://servicios.com/SERVICIO/getImage/Fault/FileNotFoundException"/>
+</operation>
+<operation name="AddAdmins">
+<input wsam:Action="http://servicios.com/SERVICIO/AddAdminsRequest" message="tns:AddAdmins"/>
+<output wsam:Action="http://servicios.com/SERVICIO/AddAdminsResponse" message="tns:AddAdminsResponse"/>
+</operation>
+<operation name="Graficar">
+<input wsam:Action="http://servicios.com/SERVICIO/GraficarRequest" message="tns:Graficar"/>
+<output wsam:Action="http://servicios.com/SERVICIO/GraficarResponse" message="tns:GraficarResponse"/>
+</operation>
+<operation name="TraerAdmins">
+<input wsam:Action="http://servicios.com/SERVICIO/TraerAdminsRequest" message="tns:TraerAdmins"/>
+<output wsam:Action="http://servicios.com/SERVICIO/TraerAdminsResponse" message="tns:TraerAdminsResponse"/>
+</operation>
+<operation name="AddBus">
+<input wsam:Action="http://servicios.com/SERVICIO/AddBusRequest" message="tns:AddBus"/>
+<output wsam:Action="http://servicios.com/SERVICIO/AddBusResponse" message="tns:AddBusResponse"/>
+</operation>
+<operation name="Loguin">
+<input wsam:Action="http://servicios.com/SERVICIO/LoguinRequest" message="tns:Loguin"/>
+<output wsam:Action="http://servicios.com/SERVICIO/LoguinResponse" message="tns:LoguinResponse"/>
 </operation>
 <operation name="hello">
 <input wsam:Action="http://servicios.com/SERVICIO/helloRequest" message="tns:hello"/>
 <output wsam:Action="http://servicios.com/SERVICIO/helloResponse" message="tns:helloResponse"/>
 </operation>
+<operation name="ModificarRuta">
+<input wsam:Action="http://servicios.com/SERVICIO/ModificarRutaRequest" message="tns:ModificarRuta"/>
+<output wsam:Action="http://servicios.com/SERVICIO/ModificarRutaResponse" message="tns:ModificarRutaResponse"/>
+</operation>
+<operation name="ModificarClave">
+<input wsam:Action="http://servicios.com/SERVICIO/ModificarClaveRequest" message="tns:ModificarClave"/>
+<output wsam:Action="http://servicios.com/SERVICIO/ModificarClaveResponse" message="tns:ModificarClaveResponse"/>
+</operation>
+<operation name="ModificarGeneral">
+<input wsam:Action="http://servicios.com/SERVICIO/ModificarGeneralRequest" message="tns:ModificarGeneral"/>
+<output wsam:Action="http://servicios.com/SERVICIO/ModificarGeneralResponse" message="tns:ModificarGeneralResponse"/>
+</operation>
+<operation name="TraerGenerales">
+<input wsam:Action="http://servicios.com/SERVICIO/TraerGeneralesRequest" message="tns:TraerGenerales"/>
+<output wsam:Action="http://servicios.com/SERVICIO/TraerGeneralesResponse" message="tns:TraerGeneralesResponse"/>
+</operation>
+<operation name="TraerChoferes">
+<input wsam:Action="http://servicios.com/SERVICIO/TraerChoferesRequest" message="tns:TraerChoferes"/>
+<output wsam:Action="http://servicios.com/SERVICIO/TraerChoferesResponse" message="tns:TraerChoferesResponse"/>
+</operation>
+<operation name="ModificarAdmin">
+<input wsam:Action="http://servicios.com/SERVICIO/ModificarAdminRequest" message="tns:ModificarAdmin"/>
+<output wsam:Action="http://servicios.com/SERVICIO/ModificarAdminResponse" message="tns:ModificarAdminResponse"/>
+</operation>
+<operation name="TraerClaves">
+<input wsam:Action="http://servicios.com/SERVICIO/TraerClavesRequest" message="tns:TraerClaves"/>
+<output wsam:Action="http://servicios.com/SERVICIO/TraerClavesResponse" message="tns:TraerClavesResponse"/>
+</operation>
+<operation name="TraerRutas">
+<input wsam:Action="http://servicios.com/SERVICIO/TraerRutasRequest" message="tns:TraerRutas"/>
+<output wsam:Action="http://servicios.com/SERVICIO/TraerRutasResponse" message="tns:TraerRutasResponse"/>
+</operation>
 </portType>
 <binding name="SERVICIOPortBinding" type="tns:SERVICIO">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="AddBus">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="Loguin">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="AddRuta">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="AddClave">
+<operation name="TraerBuses">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -155,15 +242,6 @@
 </output>
 </operation>
 <operation name="AddChofer">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="TraerAdmins">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -190,7 +268,25 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="AddAdmins">
+<operation name="AddClave">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="Eliminar">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="AddRuta">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -207,8 +303,128 @@
 <output>
 <soap:body use="literal"/>
 </output>
+<fault name="FileNotFoundException">
+<soap:fault name="FileNotFoundException" use="literal"/>
+</fault>
+</operation>
+<operation name="AddAdmins">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="Graficar">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="TraerAdmins">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="AddBus">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="Loguin">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
 </operation>
 <operation name="hello">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="ModificarRuta">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="ModificarClave">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="ModificarGeneral">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="TraerGenerales">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="TraerChoferes">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="ModificarAdmin">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="TraerClaves">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="TraerRutas">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

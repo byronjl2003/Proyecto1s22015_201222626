@@ -24,17 +24,63 @@
 
 <xs:element name="AddRutaResponse" type="tns:AddRutaResponse"/>
 
+<xs:element name="Eliminar" type="tns:Eliminar"/>
+
+<xs:element name="EliminarResponse" type="tns:EliminarResponse"/>
+
+<xs:element name="FileNotFoundException" type="tns:FileNotFoundException"/>
+
+<xs:element name="Graficar" type="tns:Graficar"/>
+
+<xs:element name="GraficarResponse" type="tns:GraficarResponse"/>
+
 <xs:element name="Loguin" type="tns:Loguin"/>
 
 <xs:element name="LoguinResponse" type="tns:LoguinResponse"/>
+
+<xs:element name="ModificarAdmin" type="tns:ModificarAdmin"/>
+
+<xs:element name="ModificarAdminResponse" type="tns:ModificarAdminResponse"/>
+
+<xs:element name="ModificarClave" type="tns:ModificarClave"/>
+
+<xs:element name="ModificarClaveResponse" type="tns:ModificarClaveResponse"/>
+
+<xs:element name="ModificarGeneral" type="tns:ModificarGeneral"/>
+
+<xs:element name="ModificarGeneralResponse" type="tns:ModificarGeneralResponse"/>
+
+<xs:element name="ModificarRuta" type="tns:ModificarRuta"/>
+
+<xs:element name="ModificarRutaResponse" type="tns:ModificarRutaResponse"/>
 
 <xs:element name="TraerAdmins" type="tns:TraerAdmins"/>
 
 <xs:element name="TraerAdminsResponse" type="tns:TraerAdminsResponse"/>
 
+<xs:element name="TraerBuses" type="tns:TraerBuses"/>
+
+<xs:element name="TraerBusesResponse" type="tns:TraerBusesResponse"/>
+
+<xs:element name="TraerChoferes" type="tns:TraerChoferes"/>
+
+<xs:element name="TraerChoferesResponse" type="tns:TraerChoferesResponse"/>
+
+<xs:element name="TraerClaves" type="tns:TraerClaves"/>
+
+<xs:element name="TraerClavesResponse" type="tns:TraerClavesResponse"/>
+
+<xs:element name="TraerGenerales" type="tns:TraerGenerales"/>
+
+<xs:element name="TraerGeneralesResponse" type="tns:TraerGeneralesResponse"/>
+
 <xs:element name="TraerImagen" type="tns:TraerImagen"/>
 
 <xs:element name="TraerImagenResponse" type="tns:TraerImagenResponse"/>
+
+<xs:element name="TraerRutas" type="tns:TraerRutas"/>
+
+<xs:element name="TraerRutasResponse" type="tns:TraerRutasResponse"/>
 
 <xs:element name="getImage" type="tns:getImage"/>
 
@@ -44,15 +90,31 @@
 
 <xs:element name="helloResponse" type="tns:helloResponse"/>
 
-<xs:complexType name="AddClave">
+<xs:complexType name="ModificarGeneral">
 <xs:sequence>
+<xs:element name="old" type="xs:string" minOccurs="0"/>
 <xs:element name="id" type="xs:string" minOccurs="0"/>
 <xs:element name="pass" type="xs:string" minOccurs="0"/>
 <xs:element name="nombre" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="AddClaveResponse">
+<xs:complexType name="ModificarGeneralResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ModificarClave">
+<xs:sequence>
+<xs:element name="old" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:string" minOccurs="0"/>
+<xs:element name="pass" type="xs:string" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ModificarClaveResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0"/>
 </xs:sequence>
@@ -70,6 +132,20 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="ModificarRuta">
+<xs:sequence>
+<xs:element name="old" type="xs:string" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="esta" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ModificarRutaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="getImage">
 <xs:sequence>
 <xs:element name="codigo" type="xs:string" minOccurs="0"/>
@@ -78,18 +154,21 @@
 
 <xs:complexType name="getImageResponse">
 <xs:sequence>
-<xs:element name="return" type="xs:base64Binary" minOccurs="0"/>
+<xs:element name="return" type="xs:base64Binary" nillable="true" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="AddAdmins">
+<xs:complexType name="FileNotFoundException">
 <xs:sequence>
-<xs:element name="email" type="xs:string" minOccurs="0"/>
-<xs:element name="pass" type="xs:string" minOccurs="0"/>
+<xs:element name="message" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="AddAdminsResponse">
+<xs:complexType name="TraerRutas">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="TraerRutasResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0"/>
 </xs:sequence>
@@ -109,19 +188,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="AddRuta">
-<xs:sequence>
-<xs:element name="nombre" type="xs:string" minOccurs="0"/>
-<xs:element name="esta" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="AddRutaResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="AddChofer">
 <xs:sequence>
 <xs:element name="nombre" type="xs:string" minOccurs="0"/>
@@ -132,6 +198,18 @@
 </xs:complexType>
 
 <xs:complexType name="AddChoferResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="Graficar">
+<xs:sequence>
+<xs:element name="grafica" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="GraficarResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0"/>
 </xs:sequence>
@@ -168,6 +246,113 @@
 <xs:complexType name="TraerImagenResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:base64Binary" nillable="true" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="Eliminar">
+<xs:sequence>
+<xs:element name="tipo" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="EliminarResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ModificarAdmin">
+<xs:sequence>
+<xs:element name="old" type="xs:string" minOccurs="0"/>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="pass" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ModificarAdminResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="AddClave">
+<xs:sequence>
+<xs:element name="id" type="xs:string" minOccurs="0"/>
+<xs:element name="pass" type="xs:string" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="AddClaveResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="TraerBuses">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="TraerBusesResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="TraerClaves">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="TraerClavesResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="AddAdmins">
+<xs:sequence>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="pass" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="AddAdminsResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="AddRuta">
+<xs:sequence>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="esta" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="AddRutaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="TraerGenerales">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="TraerGeneralesResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="TraerChoferes">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="TraerChoferesResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 

@@ -98,12 +98,35 @@ public class Index extends HttpServlet {
             }
             else
             {
-                String pagina = "/Admin?tip=ingreso";
-                request.setAttribute("RESPUESTA",vec1[1]);
-                //request.setAttribute("gettipo","0");
-                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
-            
-                dispatcher.forward(request, response);
+                if(tipo.equals("ADMINISTRADOR"))
+                {
+                    String pagina = "/Admin?tip=ingreso";
+                    request.setAttribute("RESPUESTA",vec1[1]);
+                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
+                    dispatcher.forward(request, response);
+                }
+                else if(tipo.equals("CHOFER"))
+                {
+                    String pagina = "/Chofer?tip=ingreso";
+                    request.setAttribute("RESPUESTA",vec1[1]);
+                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
+                    dispatcher.forward(request, response);
+                }
+                else if(tipo.equals("GENERAL"))
+                {
+                    String pagina = "/General?tip=ingreso";
+                    request.setAttribute("RESPUESTA",vec1[1]);
+                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
+                    dispatcher.forward(request, response);
+                }
+                else if(tipo.equals("CLAVE"))
+                {
+                    String pagina = "/Clave?tip=ingreso";
+                    request.setAttribute("RESPUESTA",vec1[1]);
+                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
+                    dispatcher.forward(request, response);
+                }
+                
             }
             
             

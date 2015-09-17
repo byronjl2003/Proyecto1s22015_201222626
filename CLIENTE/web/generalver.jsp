@@ -1,9 +1,8 @@
 <%-- 
-    Document   : adminver
-    Created on : 07-sep-2015, 19:03:37
+    Document   : generalver
+    Created on : 16-sep-2015, 16:58:48
     Author     : byron
 --%>
-
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -40,21 +39,22 @@
         <br>
         <br>
         <br>
-            <a href="Admin?tip=ADMINCREAR" class="btn btn-default" role = "button">Nuevo</a>
+            <a href="Admin?tip=GENERALCREAR" class="btn btn-default" role = "button">Nuevo</a>
         <br>
         <br>
         <table class="table table-striped">
       <thead>
         <tr>
           <th>#</th>
-          <th>Email</th>
+          <th>ID</th>
           <th>Password</th>
+          <th>Nombre</th>
           <th></th>
           <th>
         </tr>
       </thead>
       <tbody>
-          <%    String params = (String)request.getAttribute("admins");
+          <%    String params = (String)request.getAttribute("generales");
                 String[] admins = params.split("]");
                 for(int i=0;i<admins.length;i++)
                 {
@@ -65,9 +65,10 @@
           <th scope="row"><%=i+1%></th>
           <td> <%=info[0]%> </td>
           <td><%=info[1]%></td>
+          <td><%=info[2]%></td>
           <td>
-              <a href="Admin?tip=ADMINEDITAR&id=<%=info[0]%>&pass=<%=info[1]%>" class="btn btn-default" role = "button">Editar</a>
-              <a href="Admin?tip=ADMINELIMINAR&id=<%=info[0]%>&pass=<%=info[1]%>" class="btn btn-default" role = "button">Eliminar</a>
+              <a href="Admin?tip=GENERALEDITAR&id=<%=info[0]%>&pass=<%=info[1]%>&nombre=<%=info[2]%>" class="btn btn-default" role = "button">Editar</a>
+              <a href="Admin?tip=GENERALELIMINAR&id=<%=info[0]%>&pass=<%=info[1]%>&nombre=<%=info[2]%>" class="btn btn-default" role = "button">Eliminar</a>
           </td>
           <% }%>
       </tbody>

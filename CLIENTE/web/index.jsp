@@ -35,7 +35,6 @@
                 
                 <div>
                     <select name="tipo">
-                        <option value="SUPER">SUPER</option>
                         <option value="ADMINISTRADOR">ADMINISTRADOR</option>
                         <option value="CHOFER">CHOFER</option>
                         <option value="GENERAL">GENERAL</option>

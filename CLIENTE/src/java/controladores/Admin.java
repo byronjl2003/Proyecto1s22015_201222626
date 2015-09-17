@@ -74,7 +74,7 @@ public class Admin extends HttpServlet {
             throws ServletException, IOException {
             //processRequest(request, response);
             String parametro = request.getParameter("tip");
-            if(parametro.equals("1"))
+            if(parametro.equals("ADMIN"))
             {
                  String pagina = "/adminver.jsp";
                  String admins = this.traerAdmins();
@@ -82,65 +82,102 @@ public class Admin extends HttpServlet {
                  RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
                  dispatcher.forward(request, response);
             }
-            else  if(parametro.equals("2"))
+            else  if(parametro.equals("ADMINEDITAR"))
             {
                 String idd = request.getParameter("id");
+                String pass = request.getParameter("pass");
                 String pagina = "/admineditar.jsp";
-                String admins = this.traerAdmins();
                 request.setAttribute("id",idd);
+                request.setAttribute("pass",pass);
                 RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
                 dispatcher.forward(request, response);
             }
-            else  if(parametro.equals("3"))
+            else  if(parametro.equals("ADMINELIMINAR"))
             {
-                //eliminar
+                String idd = request.getParameter("id");
+                int resp = this.eliminar("ADMIN",idd);
+                String pagina = "/adminver.jsp";
+                String admins = this.traerAdmins();
+                request.setAttribute("admins",admins);
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
+                dispatcher.forward(request, response);
             }
-            else  if(parametro.equals("4"))
+            else  if(parametro.equals("ADMINCREAR"))
             {
                  String pagina = "/admincrear.jsp";
                  RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
                  dispatcher.forward(request, response);
             }
-            else if(parametro.equals("imagenes"))
+            
+            else if(parametro.equals("GENERAL"))
             {
-                String pagina = "/graficas.jsp";
+                String pagina = "/generalver.jsp";
+                String admins = this.traerGenerales();
+                request.setAttribute("generales",admins);
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
+                dispatcher.forward(request, response);
+                
+            }
+            else  if(parametro.equals("GENERALEDITAR"))
+            {
+                String idd = request.getParameter("id");
+                String pass = request.getParameter("pass");
+                String nombre = request.getParameter("nombre");
+                String pagina = "/generaleditar.jsp";
+                request.setAttribute("id",idd);
+                request.setAttribute("pass",pass);
+                request.setAttribute("nombre",nombre);
                 RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
                 dispatcher.forward(request, response);
             }
-            else if(parametro.equals("imagenes2"))
+            else  if(parametro.equals("GENERALELIMINAR"))
             {
-                byte[] bytes = this.getImage("hola");
-                response.reset();
-                response.setContentType("image/jpeg");
-                response.getOutputStream().write(bytes);
-                response.getOutputStream().flush();
-                response.getOutputStream().close();
-                
-                /*
-                ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
-                Iterator<?> readers = ImageIO.getImageReadersByFormatName("png");
-                //ImageIO is a class containing static methods for locating ImageReaders
-                //and ImageWriters, and performing simple encoding and decoding. 
-                ImageReader reader = (ImageReader) readers.next();
-                Object source = bis;
-                ImageInputStream iis = ImageIO.createImageInputStream(source);
-                reader.setInput(iis, true);
-                ImageReadParam param = reader.getDefaultReadParam();
-                Image image = reader.read(0, param);
-                //got an image file
-                BufferedImage bufferedImage = new BufferedImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_INT_RGB);
-                //bufferedImage is the RenderedImage to be written
-                Graphics2D g2 = bufferedImage.createGraphics();
-                g2.drawImage(image, null, null);
-                String ruruta = this.getServletContext().getRealPath("servlet")+"imagen.png";
-                File imageFile = new File("ruruta");
-                ImageIO.write(bufferedImage, "jpg", imageFile);
-                //System.out.println(imageFile.getPath());
-                String pagina = "/graficas.jsp";
+                String idd = request.getParameter("id");
+                int resp = this.eliminar("GENERAL",idd);
+                String pagina = "/generalver.jsp";
+                String generales = this.traerGenerales();
+                request.setAttribute("generales",generales);
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
+                dispatcher.forward(request, response);
+            }
+            else  if(parametro.equals("GENERALCREAR"))
+            {
+                 String pagina = "/generalcrear.jsp";
                  RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
                  dispatcher.forward(request, response);
-                 */
             }
+            else if(parametro.equals("CLAVE"))
+            {
+                
+            }
+            else if(parametro.equals("CHOFER"))
+            {
+                
+            }
+            else if(parametro.equals("RUTA"))
+            {
+                
+            }
+            else if(parametro.equals("BUS"))
+            {
+                
+            }
+            else if(parametro.equals("GRAFICA"))
+            {
+                String pagina = "/graficas.jsp";
+                request.setAttribute("path","");
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
+                dispatcher.forward(request, response);
+            }
+            else if(parametro.equals("GADMINS"))
+            {
+                String pagina = "/graficas.jsp";
+                String path = this.graficar("ADMINS");
+                request.setAttribute("path",path);
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
+                dispatcher.forward(request, response);
+            }
+            
             
            }
 
@@ -149,6 +186,7 @@ public class Admin extends HttpServlet {
             throws ServletException, IOException {
         
             String flag = request.getParameter("tip");
+            
             if(flag.equals("crear"))
             {
                 String EMAIL = request.getParameter("email");
@@ -169,8 +207,63 @@ public class Admin extends HttpServlet {
                     request.setAttribute("RESP",vec1[1]);
                     RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
                     dispatcher.forward(request, response);
+                }
+                
             }
+            if(flag.equals("editar"))
+            {
+                String old = (String)request.getAttribute("old");
+                
+                String EMAIL = request.getParameter("email");
+                String PASS = request.getParameter("pass");
+                if(old.equals(EMAIL)||EMAIL.equals(""))
+                {
+                    // no hubo cambios
+                    
+                }
+                String resp = this.addAdmins(EMAIL, PASS);
+            
+                String[] vec1 =  resp.split(",");
+                if(vec1[0].equals("0"))
+                {
+                    String pagina = "/admincrear.jsp";
+                    request.setAttribute("RESP",vec1[1]);
+                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
+                    dispatcher.forward(request, response);
+                }
+                else
+                {
+                    String pagina = "/admincrear.jsp";
+                    request.setAttribute("RESP",vec1[1]);
+                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
+                    dispatcher.forward(request, response);
+                }
+                
             }
+            else if(flag.equals("creargeneral"))
+            {
+                String ID = request.getParameter("id");
+                String PASS = request.getParameter("pass");
+                String NOMBRE = request.getParameter("nombre");
+                String resp = this.addGeneral(ID, PASS, NOMBRE);
+            
+                String[] vec1 =  resp.split(",");
+                if(vec1[0].equals("0"))
+                {
+                    String pagina = "/admincrear.jsp";
+                    request.setAttribute("RESP",vec1[1]);
+                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
+                    dispatcher.forward(request, response);
+                }
+                else
+                {
+                    String pagina = "/admincrear.jsp";
+                    request.setAttribute("RESP",vec1[1]);
+                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
+                    dispatcher.forward(request, response);
+                }
+                
+            } 
             else if(flag.equals("ingreso"))
             {
                  String pagina = "/admin.jsp";
@@ -186,6 +279,7 @@ public class Admin extends HttpServlet {
      *
      * @return a String containing servlet description
      */
+    
     @Override
     public String getServletInfo() {
         return "Short description";
@@ -205,12 +299,94 @@ public class Admin extends HttpServlet {
         return port.addAdmins(email, pass);
     }
 
-    private byte[] getImage(java.lang.String codigo) {
+    private int eliminar(java.lang.String tipo, java.lang.String id) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
         com.servicios.SERVICIO port = service.getSERVICIOPort();
-        return port.getImage(codigo);
+        return port.eliminar(tipo, id);
     }
+
+    private String graficar(java.lang.String grafica) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        com.servicios.SERVICIO port = service.getSERVICIOPort();
+        return port.graficar(grafica);
+    }
+
+    private String traerBuses() {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        com.servicios.SERVICIO port = service.getSERVICIOPort();
+        return port.traerBuses();
+    }
+
+    private String traerChoferes() {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        com.servicios.SERVICIO port = service.getSERVICIOPort();
+        return port.traerChoferes();
+    }
+
+    private String traerClaves() {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        com.servicios.SERVICIO port = service.getSERVICIOPort();
+        return port.traerClaves();
+    }
+
+    private String traerGenerales() {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        com.servicios.SERVICIO port = service.getSERVICIOPort();
+        return port.traerGenerales();
+    }
+
+    private String traerRutas() {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        com.servicios.SERVICIO port = service.getSERVICIOPort();
+        return port.traerRutas();
+    }
+
+    private String addBus(java.lang.String numbus) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        com.servicios.SERVICIO port = service.getSERVICIOPort();
+        return port.addBus(numbus);
+    }
+
+    private String addChofer(java.lang.String nombre, java.lang.String apellido, java.lang.String id, java.lang.String pass) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        com.servicios.SERVICIO port = service.getSERVICIOPort();
+        return port.addChofer(nombre, apellido, id, pass);
+    }
+
+    private String addClave(java.lang.String id, java.lang.String pass, java.lang.String nombre) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        com.servicios.SERVICIO port = service.getSERVICIOPort();
+        return port.addClave(id, pass, nombre);
+    }
+
+    private String addGeneral(java.lang.String id, java.lang.String pass, java.lang.String nombre) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        com.servicios.SERVICIO port = service.getSERVICIOPort();
+        return port.addGeneral(id, pass, nombre);
+    }
+
+    private String addRuta(java.lang.String nombre, java.lang.String esta) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        com.servicios.SERVICIO port = service.getSERVICIOPort();
+        return port.addRuta(nombre, esta);
+    }
+    
+    
+    
+
+   
     
     
     

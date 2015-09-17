@@ -1,6 +1,6 @@
 <%-- 
-    Document   : admineditar
-    Created on : 07-sep-2015, 19:05:16
+    Document   : generalcrear
+    Created on : 16-sep-2015, 16:58:11
     Author     : byron
 --%>
 
@@ -19,9 +19,7 @@
         
         <div>
             <div class="header">
-                <%=request.getAttribute("id") %>
-                <br>
-                 EDITAR
+                <%=request.getAttribute("RESPUESTA") %>
        
         </div>
     <div class="content">
@@ -43,15 +41,19 @@
         </div>    
             <div>
                 
-                <form id="formcrearadmin" name="editaradmin" action="Admin?tip=editar?old=<%=request.getAttribute("id")%>" method="post">
+                <form id="formcrearadmin" name="creargeneral" action="Admin?tip=creargeneral" method="post">
                 <div class="form-group">
-                    <label for="inputEmail">EMAIL:</label>
-                    <input type="text" class="form-control"  placeholder="<%=request.getAttribute("id")%>" name="email" >
+                    <label for="inputID">ID</label>
+                    <input type="text" class="form-control"  placeholder="ID" name="id">
                 </div>
                 <div class="form-group">
-                    <label for="inputPassword">PASS:</label> 
-                    <input type="text" class="form-control" placeholder="<%=request.getAttribute("pass")%>" name="pass">
+                    <label for="inputPassword">Contraseña</label>
+                    <input type="text" class="form-control" placeholder="Contraseña" name="pass">
                 </div>
+                <div class="form-group">
+                    <label for="inputNombre">Nombre</label>
+                    <input type="text" class="form-control" placeholder="Nombre" name="nombre">
+                </div>    
                 
                 
                 <br>
@@ -63,7 +65,7 @@
                        answer = (String)request.getAttribute("RESP");
                 
                 %>
-                <label for="inputEmail"><%=answer%></label>
+                <label for="resp"><%=answer%></label>
                 <br>
                 <br>
                 <button type="submit" class="btn btn-primary">Crear</button>
@@ -74,10 +76,12 @@
         <br>
         
         <%@include file="WEB-INF/jspf/bottom.jspf" %>
-        
+     
    
 
-    <%-- end web service invocation --%><hr/>
+    
+
     </body>
+    
 </html>
 

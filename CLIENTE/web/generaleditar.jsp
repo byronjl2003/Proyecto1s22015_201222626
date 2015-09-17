@@ -1,6 +1,6 @@
 <%-- 
-    Document   : admineditar
-    Created on : 07-sep-2015, 19:05:16
+    Document   : generaleditar
+    Created on : 16-sep-2015, 16:58:35
     Author     : byron
 --%>
 
@@ -43,13 +43,13 @@
         </div>    
             <div>
                 
-                <form id="formcrearadmin" name="editaradmin" action="Admin?tip=editar?old=<%=request.getAttribute("id")%>" method="post">
+                <form id="formcrearadmin" name="crearadmin" action="Admin?tip=crear" method="post">
                 <div class="form-group">
                     <label for="inputEmail">EMAIL:</label>
-                    <input type="text" class="form-control"  placeholder="<%=request.getAttribute("id")%>" name="email" >
+                    <input type="text" class="form-control"  placeholder="<%=request.getAttribute("id")%>" name="email">
                 </div>
                 <div class="form-group">
-                    <label for="inputPassword">PASS:</label> 
+                    <label for="inputPassword">PASS:</label>
                     <input type="text" class="form-control" placeholder="<%=request.getAttribute("pass")%>" name="pass">
                 </div>
                 
@@ -80,4 +80,5 @@
     <%-- end web service invocation --%><hr/>
     </body>
 </html>
+
 
