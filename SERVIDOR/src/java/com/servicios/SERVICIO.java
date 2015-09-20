@@ -336,28 +336,28 @@ public class SERVICIO {
             //System.out.println("EN EL SERVICIO ENTRE QUE EL PARAMETRO ES ADMINS");
             this.administradores.Graficar(this.administradores.raiz);
             System.out.println();
-            return"http://localhost:8080/SERVIDOR/resources/avladmins.png";
+            return"http://192.168.56.101:8080/SERVIDOR/resources/avladmins.png";
         }
         else if(grafica.equals("CLAVES"))
         {
             //System.out.println("EN EL SERVICIO ENTRE QUE EL PARAMETRO ES ADMINS");
             this.EstacionesClaves.Graficar(this.EstacionesClaves.raiz);
             System.out.println();
-            return"http://localhost:8080/SERVIDOR/resources/avlclaves.png";
+            return"http://192.168.56.101:8080/SERVIDOR/resources/avlclaves.png";
         }
         else if(grafica.equals("GENERALES"))
         {
             //System.out.println("EN EL SERVICIO ENTRE QUE EL PARAMETRO ES ADMINS");
             this.EstacionesGenerales.Graficar(this.EstacionesGenerales.raiz);
             System.out.println();
-            return"http://localhost:8080/SERVIDOR/resources/avlgenerales.png";
+            return"http://192.168.56.101:8080/SERVIDOR/resources/avlgenerales.png";
         }
         else if(grafica.equals("CHOFERES"))
         {
             //System.out.println("EN EL SERVICIO ENTRE QUE EL PARAMETRO ES ADMINS");
             this.choferes.Graficar(this.choferes.raiz);
             System.out.println();
-            return"http://localhost:8080/SERVIDOR/resources/avlchoferes.png";
+            return"http://192.168.56.101:8080/SERVIDOR/resources/avlchoferes.png";
         }
         else
             return "";
