@@ -1,6 +1,6 @@
 <%-- 
-    Document   : generalcrear
-    Created on : 16-sep-2015, 16:58:11
+    Document   : buscrear
+    Created on : 20-sep-2015, 8:22:30
     Author     : byron
 --%>
 
@@ -19,7 +19,7 @@
         
         <div>
             <div class="header">
-                CREACION DE ESTACIONES GENERALES
+                CREAR BUSES
        
         </div>
     <div class="content">
@@ -27,7 +27,7 @@
                 
         <div class="divmenu">
         <div class="btn-group" role="group" aria-label="...">
-           
+            
             <a href="Admin?tip=ADMIN" class="btn btn-default" role = "button">Administradores</a>
             <a href="Admin?tip=GENERAL" class="btn btn-default" role = "button">Est. Generales</a>
             <a href="Admin?tip=CLAVE" class="btn btn-default" role = "button">Est. Clave</a>
@@ -39,19 +39,13 @@
         </div>    
             <div>
                 
-                <form id="formcrearadmin" name="creargeneral" action="Admin?tip=creargeneral" method="post">
+                <form id="formcrearadmin" name="crearbus" action="Admin?tip=crearbus" method="post">
                 <div class="form-group">
-                    <label for="inputID">ID</label>
-                    <input type="text" class="form-control"  placeholder="ID" name="id">
+                    <label for="inputID">ID BUS</label>
+                    <input type="text" class="form-control"  placeholder="ID BUS" name="idbus">
                 </div>
-                <div class="form-group">
-                    <label for="inputPassword">Contraseña</label>
-                    <input type="text" class="form-control" placeholder="Contraseña" name="pass">
-                </div>
-                <div class="form-group">
-                    <label for="inputNombre">Nombre</label>
-                    <input type="text" class="form-control" placeholder="Nombre" name="nombre">
-                </div>    
+                
+                    
                 
                 
                 <br>
@@ -82,4 +76,6 @@
     </body>
     
 </html>
+
+
 

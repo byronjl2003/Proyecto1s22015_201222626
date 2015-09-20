@@ -1,6 +1,6 @@
 <%-- 
-    Document   : generalcrear
-    Created on : 16-sep-2015, 16:58:11
+    Document   : chofereditar
+    Created on : 20-sep-2015, 14:41:40
     Author     : byron
 --%>
 
@@ -19,7 +19,9 @@
         
         <div>
             <div class="header">
-                CREACION DE ESTACIONES GENERALES
+                <%=request.getAttribute("id") %>
+                <br>
+                 EDITAR
        
         </div>
     <div class="content">
@@ -27,7 +29,7 @@
                 
         <div class="divmenu">
         <div class="btn-group" role="group" aria-label="...">
-           
+            
             <a href="Admin?tip=ADMIN" class="btn btn-default" role = "button">Administradores</a>
             <a href="Admin?tip=GENERAL" class="btn btn-default" role = "button">Est. Generales</a>
             <a href="Admin?tip=CLAVE" class="btn btn-default" role = "button">Est. Clave</a>
@@ -39,19 +41,23 @@
         </div>    
             <div>
                 
-                <form id="formcrearadmin" name="creargeneral" action="Admin?tip=creargeneral" method="post">
+                <form id="formeditarclave" name="editarclave" action="Admin?tip=editarclave&old=<%=request.getAttribute("id")%>" method="post">
                 <div class="form-group">
-                    <label for="inputID">ID</label>
-                    <input type="text" class="form-control"  placeholder="ID" name="id">
+                    <label for="inputEmail">ID:</label>
+                    <input type="text" class="form-control"  placeholder="<%=request.getAttribute("id")%>" name="id">
                 </div>
                 <div class="form-group">
-                    <label for="inputPassword">Contraseña</label>
-                    <input type="text" class="form-control" placeholder="Contraseña" name="pass">
+                    <label for="inputPassword">PASS:</label>
+                    <input type="text" class="form-control" placeholder="<%=request.getAttribute("pass")%>" name="pass">
                 </div>
                 <div class="form-group">
-                    <label for="inputNombre">Nombre</label>
-                    <input type="text" class="form-control" placeholder="Nombre" name="nombre">
-                </div>    
+                    <label for="inputPassword">NOMBRE:</label>
+                    <input type="text" class="form-control" placeholder="<%=request.getAttribute("nombre")%>" name="nombre">
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword">APELLIDO:</label>
+                    <input type="text" class="form-control" placeholder="<%=request.getAttribute("apellido")%>" name="nombre">
+                </div>
                 
                 
                 <br>
@@ -63,7 +69,7 @@
                        answer = (String)request.getAttribute("RESP");
                 
                 %>
-                <label for="resp"><%=answer%></label>
+                <label for="inputEmail"><%=answer%></label>
                 <br>
                 <br>
                 <button type="submit" class="btn btn-primary">Crear</button>
@@ -74,12 +80,9 @@
         <br>
         
         <%@include file="WEB-INF/jspf/bottom.jspf" %>
-     
+        
    
 
-    
-
+    <%-- end web service invocation --%><hr/>
     </body>
-    
 </html>
-

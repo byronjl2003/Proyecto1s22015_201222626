@@ -9,12 +9,8 @@
         <servlet-class>controladores.Admin</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AdminSV</servlet-name>
-        <servlet-class>controladores.AdminSV</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>forpruebas</servlet-name>
-        <servlet-class>controladores.forpruebas</servlet-class>
+        <servlet-name>UploadServlet</servlet-name>
+        <servlet-class>controladores.UploadServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
@@ -25,16 +21,19 @@
         <url-pattern>/Admin</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AdminSV</servlet-name>
-        <url-pattern>/AdminSV</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>forpruebas</servlet-name>
-        <url-pattern>/forpruebas</url-pattern>
+        <servlet-name>UploadServlet</servlet-name>
+        <url-pattern>/UploadServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    <context-param>
+        <description>Location to store uploaded file</description>
+        <param-name>file-upload</param-name>
+        <param-value>
+         c:\apache-tomcat-5.5.29\webapps\data\
+     </param-value>
+    </context-param>
 </web-app>

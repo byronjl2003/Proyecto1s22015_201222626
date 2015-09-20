@@ -1,28 +1,28 @@
 <%-- 
-    Document   : index
-    Created on : 02-sep-2015, 21:32:11
+    Document   : asignacion
+    Created on : 17-sep-2015, 20:17:06
     Author     : byron
 --%>
 
+<%@page import="java.io.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%@include file = "WEB-INF/jspf/jscss.jspf" %>
+        <script type="text/javascript" src="codigo.js"></script>
         <title>PROYECTO1 EDD</title>
+        
     </head>
     <body>
-        <%! String nombre;%>
-        
-        
-        
         <div>
             <div class="header">
-                <%=request.getAttribute("RESPUESTA") %>
+                ASIGNACION DE BUSES
        
-        </div>
-    <div class="content">
+            </div>
+            
+             <div class="content">
         
                 
         <div class="divmenu">
@@ -39,15 +39,13 @@
             <a href="Admin?tip=ASIGNACION" class="btn btn-default" role = "button">ASIGNACION</a>
         </div>
         </div>    
-        <div class="divmenu">
-            HOLIS.. SUPERADMIN
-        </div>
-        <br>
+            <form action="UploadServlet" method="post"
+                        enctype="multipart/form-data">
+<input type="file" name="file" size="50" />
+<br />
+<input type="submit" value="Upload File" />
+</form>
         
-        <%@include file="WEB-INF/jspf/bottom.jspf" %>
-        
-   
-
-    <%-- end web service invocation --%><hr/>
+      <%@include file="WEB-INF/jspf/bottom.jspf" %>
     </body>
 </html>

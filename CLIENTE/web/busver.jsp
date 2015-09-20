@@ -1,6 +1,6 @@
 <%-- 
-    Document   : generalver
-    Created on : 16-sep-2015, 16:58:48
+    Document   : busver
+    Created on : 20-sep-2015, 8:22:10
     Author     : byron
 --%>
 
@@ -19,7 +19,7 @@
         
         <div>
             <div class="header">
-                <%=request.getAttribute("nombre") %>
+                BUSES
        
             </div>
     <div class="content">
@@ -39,32 +39,31 @@
         <br>
         <br>
         <br>
-            <a href="Admin?tip=GENERALCREAR" class="btn btn-default" role = "button">Nuevo</a>
+            <a href="Admin?tip=BUSCREAR" class="btn btn-default" role = "button">Nuevo</a>
         <br>
         <br>
         <table class="table table-striped">
       <thead>
         <tr>
-          <th>#</th>
-          <th>ID</th>
-          <th>Password</th>
-          <th>Nombre</th>
+          
+          <th>ID BUS</th>
+          <th>PERSONAS</th>
           <th></th>
-          <th>
+          
         </tr>
       </thead>
       <tbody>
-          <%String params =  (String)request.getAttribute("generales");
+          <%String params =  (String)request.getAttribute("buses");
           if(params.equals(""))
           {
               
           }
           else
           {
-              String[] admins = params.split("]");
-                for(int i=0;i<admins.length;i++)
+              String[] bu = params.split("]");
+                for(int i=0;i<bu.length;i++)
                 {
-                    String[]info = admins[i].split(",");
+                    String[] buses = bu[i].split(",");
                 
           
           
@@ -74,13 +73,11 @@
                 
           %>
         <tr>
-          <th scope="row"><%=i+1%></th>
-          <td> <%=info[0]%> </td>
-          <td><%=info[1]%></td>
-          <td><%=info[2]%></td>
+          
+          <td> <%=buses[0]%></td>
+          <td> <%=buses[1]%></td>
           <td>
-              <a href="Admin?tip=GENERALEDITAR&id=<%=info[0]%>&pass=<%=info[1]%>&nombre=<%=info[2]%>" class="btn btn-default" role = "button">Editar</a>
-              <a href="Admin?tip=GENERALELIMINAR&id=<%=info[0]%>&pass=<%=info[1]%>&nombre=<%=info[2]%>" class="btn btn-default" role = "button">Eliminar</a>
+              <a href="Admin?tip=BUSELIMINAR&id=<%=buses[i]%>" class="btn btn-default" role = "button">Eliminar</a>
           </td>
           <% }
              }
@@ -101,3 +98,4 @@
     <%-- end web service invocation --%><hr/>
     </body>
 </html>
+

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : generalver
-    Created on : 16-sep-2015, 16:58:48
+    Document   : clave ver
+    Created on : 17-sep-2015, 17:02:55
     Author     : byron
 --%>
 
@@ -39,7 +39,7 @@
         <br>
         <br>
         <br>
-            <a href="Admin?tip=GENERALCREAR" class="btn btn-default" role = "button">Nuevo</a>
+            <a href="Admin?tip=CLAVECREAR" class="btn btn-default" role = "button">Nuevo</a>
         <br>
         <br>
         <table class="table table-striped">
@@ -54,7 +54,7 @@
         </tr>
       </thead>
       <tbody>
-          <%String params =  (String)request.getAttribute("generales");
+          <%String params =  (String)request.getAttribute("claves");
           if(params.equals(""))
           {
               
@@ -79,8 +79,8 @@
           <td><%=info[1]%></td>
           <td><%=info[2]%></td>
           <td>
-              <a href="Admin?tip=GENERALEDITAR&id=<%=info[0]%>&pass=<%=info[1]%>&nombre=<%=info[2]%>" class="btn btn-default" role = "button">Editar</a>
-              <a href="Admin?tip=GENERALELIMINAR&id=<%=info[0]%>&pass=<%=info[1]%>&nombre=<%=info[2]%>" class="btn btn-default" role = "button">Eliminar</a>
+              <a href="Admin?tip=CLAVEEDITAR&id=<%=info[0]%>&pass=<%=info[1]%>&nombre=<%=info[2]%>" class="btn btn-default" role = "button">Editar</a>
+              <a href="Admin?tip=CLAVEELIMINAR&id=<%=info[0]%>&pass=<%=info[1]%>&nombre=<%=info[2]%>" class="btn btn-default" role = "button">Eliminar</a>
           </td>
           <% }
              }
@@ -101,3 +101,4 @@
     <%-- end web service invocation --%><hr/>
     </body>
 </html>
+

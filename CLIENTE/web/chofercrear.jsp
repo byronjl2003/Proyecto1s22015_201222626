@@ -1,9 +1,8 @@
 <%-- 
-    Document   : generalcrear
-    Created on : 16-sep-2015, 16:58:11
+    Document   : chofercrear
+    Created on : 20-sep-2015, 14:41:15
     Author     : byron
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,7 +18,7 @@
         
         <div>
             <div class="header">
-                CREACION DE ESTACIONES GENERALES
+                CREAR CHOFER
        
         </div>
     <div class="content">
@@ -27,7 +26,7 @@
                 
         <div class="divmenu">
         <div class="btn-group" role="group" aria-label="...">
-           
+          
             <a href="Admin?tip=ADMIN" class="btn btn-default" role = "button">Administradores</a>
             <a href="Admin?tip=GENERAL" class="btn btn-default" role = "button">Est. Generales</a>
             <a href="Admin?tip=CLAVE" class="btn btn-default" role = "button">Est. Clave</a>
@@ -39,7 +38,7 @@
         </div>    
             <div>
                 
-                <form id="formcrearadmin" name="creargeneral" action="Admin?tip=creargeneral" method="post">
+                <form id="formcrearadmin" name="crearchofer" action="Admin?tip=crearchofer" method="post">
                 <div class="form-group">
                     <label for="inputID">ID</label>
                     <input type="text" class="form-control"  placeholder="ID" name="id">
@@ -51,7 +50,11 @@
                 <div class="form-group">
                     <label for="inputNombre">Nombre</label>
                     <input type="text" class="form-control" placeholder="Nombre" name="nombre">
-                </div>    
+                </div>
+                    <div class="form-group">
+                    <label for="inputNombre">Apellido</label>
+                    <input type="text" class="form-control" placeholder="Apellido" name="apellido">
+                </div>
                 
                 
                 <br>
@@ -82,4 +85,6 @@
     </body>
     
 </html>
+
+
 

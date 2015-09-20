@@ -43,7 +43,7 @@
         </div>    
             <div>
                 
-                <form id="formcrearadmin" name="editaradmin" action="Admin?tip=editar?old=<%=request.getAttribute("id")%>" method="post">
+                <form id="formcrearadmin" name="editaradmin" action="Admin?tip=editar&old=<%=request.getAttribute("id")%>" method="post">
                 <div class="form-group">
                     <label for="inputEmail">EMAIL:</label>
                     <input type="text" class="form-control"  placeholder="<%=request.getAttribute("id")%>" name="email" >
@@ -66,7 +66,7 @@
                 <label for="inputEmail"><%=answer%></label>
                 <br>
                 <br>
-                <button type="submit" class="btn btn-primary">Crear</button>
+                <button type="submit" class="btn btn-primary">EDITAR</button>
             </form>
                 
                 

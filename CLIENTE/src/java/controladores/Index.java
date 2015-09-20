@@ -20,7 +20,7 @@ import javax.xml.ws.WebServiceRef;
  * @author byron
  */
 public class Index extends HttpServlet {
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/SERVIDOR/SERVICIO.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/192.168.56.101_8080/SERVIDOR/SERVICIO.wsdl")
     private SERVICIO_Service service;
 
     /**
@@ -153,6 +153,8 @@ public class Index extends HttpServlet {
         com.servicios.SERVICIO port = service.getSERVICIOPort();
         return port.loguin(tipo, id, pass);
     }
+
+    
 
     
 

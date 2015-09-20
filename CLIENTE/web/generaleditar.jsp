@@ -43,14 +43,18 @@
         </div>    
             <div>
                 
-                <form id="formcrearadmin" name="crearadmin" action="Admin?tip=crear" method="post">
+                <form id="formcrearadmin" name="editargeneral" action="Admin?tip=editargeneral&old=<%=request.getAttribute("id")%>" method="post">
                 <div class="form-group">
-                    <label for="inputEmail">EMAIL:</label>
+                    <label for="inputEmail">ID:</label>
                     <input type="text" class="form-control"  placeholder="<%=request.getAttribute("id")%>" name="email">
                 </div>
                 <div class="form-group">
                     <label for="inputPassword">PASS:</label>
                     <input type="text" class="form-control" placeholder="<%=request.getAttribute("pass")%>" name="pass">
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword">NOMBRE:</label>
+                    <input type="text" class="form-control" placeholder="<%=request.getAttribute("nombre")%>" name="nombre">
                 </div>
                 
                 

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : generalcrear
-    Created on : 16-sep-2015, 16:58:11
+    Document   : clavecrear
+    Created on : 17-sep-2015, 17:02:21
     Author     : byron
 --%>
 
@@ -19,7 +19,7 @@
         
         <div>
             <div class="header">
-                CREACION DE ESTACIONES GENERALES
+                <%=request.getAttribute("RESPUESTA") %>
        
         </div>
     <div class="content">
@@ -27,7 +27,9 @@
                 
         <div class="divmenu">
         <div class="btn-group" role="group" aria-label="...">
-           
+            <% request.setAttribute("nombre",request.getAttribute("RESPUESTA"));
+               //request.setAttribute("tip","1");
+            %>
             <a href="Admin?tip=ADMIN" class="btn btn-default" role = "button">Administradores</a>
             <a href="Admin?tip=GENERAL" class="btn btn-default" role = "button">Est. Generales</a>
             <a href="Admin?tip=CLAVE" class="btn btn-default" role = "button">Est. Clave</a>
@@ -39,7 +41,7 @@
         </div>    
             <div>
                 
-                <form id="formcrearadmin" name="creargeneral" action="Admin?tip=creargeneral" method="post">
+                <form id="formcrearadmin" name="crearclave" action="Admin?tip=crearclave" method="post">
                 <div class="form-group">
                     <label for="inputID">ID</label>
                     <input type="text" class="form-control"  placeholder="ID" name="id">
@@ -82,4 +84,5 @@
     </body>
     
 </html>
+
 

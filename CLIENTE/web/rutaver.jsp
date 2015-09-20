@@ -1,9 +1,11 @@
 <%-- 
-    Document   : generalver
-    Created on : 16-sep-2015, 16:58:48
+    Document   : rutaver
+    Created on : 20-sep-2015, 9:57:16
     Author     : byron
 --%>
 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,7 +21,7 @@
         
         <div>
             <div class="header">
-                <%=request.getAttribute("nombre") %>
+               RUTAS!
        
             </div>
     <div class="content">
@@ -39,32 +41,34 @@
         <br>
         <br>
         <br>
-            <a href="Admin?tip=GENERALCREAR" class="btn btn-default" role = "button">Nuevo</a>
+            <a href="Admin?tip=RUTACREAR" class="btn btn-default" role = "button">Nuevo</a>
         <br>
         <br>
         <table class="table table-striped">
       <thead>
         <tr>
           <th>#</th>
-          <th>ID</th>
-          <th>Password</th>
-          <th>Nombre</th>
+          <th>NOMBRE</th>
+          <th>ESTACIONES</th>
+          
           <th></th>
           <th>
         </tr>
       </thead>
       <tbody>
-          <%String params =  (String)request.getAttribute("generales");
+          <%String params =  (String)request.getAttribute("rutas");
           if(params.equals(""))
           {
               
           }
           else
           {
-              String[] admins = params.split("]");
+              String[] admins = params.split(";");
                 for(int i=0;i<admins.length;i++)
                 {
-                    String[]info = admins[i].split(",");
+                    String[]info = admins[i].split(":");
+                    
+                    
                 
           
           
@@ -77,10 +81,10 @@
           <th scope="row"><%=i+1%></th>
           <td> <%=info[0]%> </td>
           <td><%=info[1]%></td>
-          <td><%=info[2]%></td>
+         
           <td>
-              <a href="Admin?tip=GENERALEDITAR&id=<%=info[0]%>&pass=<%=info[1]%>&nombre=<%=info[2]%>" class="btn btn-default" role = "button">Editar</a>
-              <a href="Admin?tip=GENERALELIMINAR&id=<%=info[0]%>&pass=<%=info[1]%>&nombre=<%=info[2]%>" class="btn btn-default" role = "button">Eliminar</a>
+              <a href="Admin?tip=CLAVEEDITAR&id=<%=info[0]%>&pass=<%=info[1]%>&nombre=<%=info[2]%>" class="btn btn-default" role = "button">Editar</a>
+              <a href="Admin?tip=CLAVEELIMINAR&id=<%=info[0]%>&pass=<%=info[1]%>&nombre=<%=info[2]%>" class="btn btn-default" role = "button">Eliminar</a>
           </td>
           <% }
              }
