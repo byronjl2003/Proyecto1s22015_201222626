@@ -12,19 +12,19 @@ package com.ArbolChoferes;
 public class NInfo {
     
     private NInfo next,back;
-    private int bus;
-    private String ruta;
+    private NBus bus;
+    private NRuta ruta;
     private String horaini,horafinal;
     private String id;
     public LTiempos ltiempos;
-    public NInfo(int numbus,String nomruta,String hini, String hfinal,String fecha,int id)
+    public NInfo(NBus bus,NRuta nomruta,String hini, String hfinal,int id)
     {
         this.next = this.back = null;
-        this.bus = numbus;
-        this.ruta = nomruta;
+        this.bus = bus;
+        this.ruta = ruta;
         this.horaini = hini;
         this.horafinal = hfinal;
-        this.id = fecha+id;
+        this.id = id+"";
         ltiempos = new LTiempos();
         
         
@@ -71,28 +71,28 @@ public class NInfo {
     /**
      * @return the bus
      */
-    public int getBus() {
+    public NBus getBus() {
         return bus;
     }
 
     /**
      * @param bus the bus to set
      */
-    public void setBus(int bus) {
+    public void setBus(NBus bus) {
         this.bus = bus;
     }
 
     /**
      * @return the ruta
      */
-    public String getRuta() {
+    public NRuta getRuta() {
         return ruta;
     }
 
     /**
      * @param ruta the ruta to set
      */
-    public void setRuta(String ruta) {
+    public void setRuta(NRuta ruta) {
         this.ruta = ruta;
     }
 

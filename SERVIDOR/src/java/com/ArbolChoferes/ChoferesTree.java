@@ -22,6 +22,23 @@ public class ChoferesTree {
             
         }
         
+        public ABBE BuscarParaAsignacion(String id,ABBE raiz)
+        {
+            if(raiz!=null)
+            {
+                if (this.Comparador(id,this.raiz.getID()) == 0)
+                    return raiz;
+                else if (this.Comparador(id,this.raiz.getID()) < 0)//
+                    return BuscarParaAsignacion(id,raiz.getIz());
+                else
+                    return BuscarParaAsignacion(id,raiz.getDer());
+            }
+            else
+            {
+                return add(id,"Chofer","chofer","apellido"); 
+            }
+        }
+        
         public String ModificarChofer(String old,String id,String pass,String nombre,String apellido)
         {
             if(old.equals(id)||id.equals(""))
@@ -201,6 +218,102 @@ public class ChoferesTree {
             }
             //System.out.println("-------------------------------------------");
         }
+        
+        
+        public ABBE add(String id,String pass,String nombre,String apellido)
+        {
+            if(this.raiz==null)
+            {
+                raiz = new ABBE(id,pass,nombre,apellido,0,0);
+                return raiz;
+            }
+            else  if (this.Comparador(id,this.raiz.getID()) < 0)//nick es menor que la raiz
+            {
+                //System.out.println("ENTRO QUE el ingresado es menor que la raiz");
+                if(this.raiz.getIz()==null)
+                {
+                   this.raiz.setIz(new ABBE(id,pass,nombre,apellido,0,0));
+                   this.raiz.getIz().setPadre(this.raiz);
+                   ABBE son = this.raiz.getIz();
+                   this.raiz.setFe(this.Altura(this.raiz.getDer())-this.Altura(this.raiz.getIz()));
+                   //System.out.println("altura de " +this.raiz.getEmail() + ": "+this.raiz.getFe());
+                   if (this.raiz.getFe() ==-2)
+                   {
+                       if(son.getFe()==-1)
+                           this.RotacionII(this.raiz,son);
+                       else
+                           this.RotacionID(this.raiz,son);
+                   }
+                   return this.raiz.getIz();
+                }
+                else
+                {
+                  ABBE res = this.raiz.getIz().add(id,pass,nombre,apellido);
+                  ABBE son = this.raiz.getIz();
+                  this.raiz.setFe(this.raiz.Altura(this.raiz.getDer())-this.raiz.Altura(this.raiz.getIz()));
+                  //System.out.println("altura de " +this.raiz.getEmail() + ": "+this.raiz.getFe());
+                   if (this.raiz.getFe() ==-2)
+                   {
+                       if(son.getFe()==-1)
+                           this.RotacionII(this.raiz,son);
+                       else
+                           this.RotacionID(this.raiz,son);
+                   }
+                   return res;
+                  
+                
+                }
+                    
+            }
+            else if (this.raiz.Comparador(id,this.raiz.getID()) > 0)
+            {
+                //System.out.println("ENTRO QUE el ingresado es mayor que la raiz");
+                if(this.raiz.getDer()==null)
+                {
+                   this.raiz.setDer(new ABBE(id,pass,nombre,apellido,0,0));
+                   this.raiz.getDer().setPadre(this.raiz);
+                   ABBE son = this.raiz.getDer();
+                   this.raiz.setFe(this.raiz.Altura(this.raiz.getDer())-this.raiz.Altura(this.raiz .getIz()));
+                   //System.out.println("altura de " +this.raiz.getEmail() + ": "+this.raiz.getFe());
+                   if (this.raiz.getFe() ==2)
+                   {
+                       if(son.getFe()==1)
+                           this.RotacionDD(this.raiz,son);
+                       else
+                           this.RotacionDI(this.raiz,son);
+                   }
+                   return raiz.getDer();
+                }
+                else
+                {
+                  ABBE res = this.raiz.getDer().add(id,pass,nombre,apellido);
+                  ABBE son = this.raiz.getDer();
+                  this.raiz.setFe(this.Altura(this.raiz.getDer())-this.Altura(this.raiz.getIz()));
+                  //System.out.println("altura de " +this.raiz.getEmail() + ": "+this.raiz.getFe());
+                   if (this.raiz.getFe() ==2)
+                   {
+                       if(son.getFe()==1)
+                           this.RotacionDD(this.raiz,son);
+                       else
+                           this.RotacionDI(this.raiz,son);
+                   }
+                   return res;
+                  
+                
+                }
+                
+               
+                
+                    
+                    
+            }
+            else
+            {
+                return null;
+            }
+            //System.out.println("-------------------------------------------");
+        }
+        
         
         public int Comparador(String comparado, String comparador)
         {

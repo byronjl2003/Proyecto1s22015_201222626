@@ -21,12 +21,31 @@ public class LFechas {
         this.primero= this.ultimo = null;
         
     }
+    
+    public NFecha BuscarParaAsignacion(String fecha)
+    {
+        NFecha resp = this.primero;
+        while(resp!=null)
+        {
+            if(resp.getFecha().equals(fecha))
+                break;
+            else
+                resp = resp.getNext();
+        }
+        if(resp==null)
+        {
+            return Add(fecha);
+        }
+        else
+            return resp;
+        
+    }
     private boolean Vacia()
     {
         return this.getPrimero()==null;
     }
    
-    public void Add(String fec)
+    public NFecha Add(String fec)
     {
         if(Vacia())
         {
@@ -34,6 +53,7 @@ public class LFechas {
             this.setElementos(this.getElementos() + 1);
             this.primero = new NFecha(fec);
             this.ultimo = this.primero;
+            return this.primero;
             
         }
         else
@@ -41,7 +61,8 @@ public class LFechas {
             this.setElementos(this.getElementos()+1);
             getUltimo().setNext(new NFecha(fec));
             getUltimo().getNext().setBack(getUltimo());
-            this.setUltimo(getUltimo().getNext());  
+            this.setUltimo(getUltimo().getNext());
+            return this.ultimo;
             
         
         }//else

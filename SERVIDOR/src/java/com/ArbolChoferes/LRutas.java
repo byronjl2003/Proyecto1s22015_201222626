@@ -57,7 +57,7 @@ public class LRutas {
             else
             resp = resp.getNext();
         }
-        return null;
+        return resp;
     }
    
     public String Add(String nombre,String esta)

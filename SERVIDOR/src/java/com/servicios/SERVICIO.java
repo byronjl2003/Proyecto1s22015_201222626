@@ -91,6 +91,18 @@ public class SERVICIO {
         return this.rutas.ModificarRutas(old, nombre,esta);
         //return "DESDE SERVIDOR/TraerAdmins";
     }
+    @WebMethod(operationName = "ModificarChofer")
+    public String ModificarChofer(@WebParam(name = "old") String old,@WebParam(name = "id") String id,@WebParam(name = "pass") String pass,@WebParam(name = "nombre") String nombre,@WebParam(name = "apellido") String apellido) {
+        //TODO write your implementation code here:
+        return this.choferes.ModificarChofer(old, id, pass, nombre, apellido);
+        //return "DESDE SERVIDOR/TraerAdmins";
+    }
+    @WebMethod(operationName = "ModificarBus")
+    public String ModificarBus(@WebParam(name = "old") String old,@WebParam(name = "idbus") String idbus,@WebParam(name = "personas") String personas) {
+        //TODO write your implementation code here:
+        return this.buses.ModificarBus(old,idbus,personas);
+        //return "DESDE SERVIDOR/TraerAdmins";
+    }
     @WebMethod(operationName = "hello")
     public String hello(@WebParam(name = "name") String txt) {
         return "Hello " + txt + " !";
@@ -329,26 +341,53 @@ public class SERVICIO {
         else if(grafica.equals("CLAVES"))
         {
             //System.out.println("EN EL SERVICIO ENTRE QUE EL PARAMETRO ES ADMINS");
-            this.administradores.Graficar(this.administradores.raiz);
+            this.EstacionesClaves.Graficar(this.EstacionesClaves.raiz);
             System.out.println();
             return"http://localhost:8080/SERVIDOR/resources/avlclaves.png";
         }
         else if(grafica.equals("GENERALES"))
         {
             //System.out.println("EN EL SERVICIO ENTRE QUE EL PARAMETRO ES ADMINS");
-            this.administradores.Graficar(this.administradores.raiz);
+            this.EstacionesGenerales.Graficar(this.EstacionesGenerales.raiz);
             System.out.println();
             return"http://localhost:8080/SERVIDOR/resources/avlgenerales.png";
         }
         else if(grafica.equals("CHOFERES"))
         {
             //System.out.println("EN EL SERVICIO ENTRE QUE EL PARAMETRO ES ADMINS");
-            this.administradores.Graficar(this.administradores.raiz);
+            this.choferes.Graficar(this.choferes.raiz);
             System.out.println();
             return"http://localhost:8080/SERVIDOR/resources/avlchoferes.png";
         }
         else
             return "";
+        
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "Asignacion")
+    public int Asignacion(@WebParam(name = "linea") String linea) {
+        
+        String vec1[] = linea.split(",");
+        
+        com.ArbolChoferes.NRuta ruta = this.rutas.Buscar(vec1[1]);
+        if(ruta!=null)
+        {
+            com.ArbolChoferes.ABBE chofer = this.choferes.BuscarParaAsignacion(vec1[2],this.choferes.raiz);
+            com.ArbolChoferes.NBus bus = this.buses.BuscarParaAsignacion(Integer.parseInt(vec1[0]));
+            com.ArbolChoferes.NFecha fecha = chofer.getFechas().BuscarParaAsignacion(vec1[5]);
+            fecha.getLinformacion().Add(bus, ruta, vec1[3],vec1[4]);
+            return 1;
+        }
+        else
+            return 0;
+        
+        
+        
+        
+        
         
     }
 

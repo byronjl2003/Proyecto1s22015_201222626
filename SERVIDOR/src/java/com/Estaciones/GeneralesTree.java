@@ -19,6 +19,7 @@ public class GeneralesTree {
         public GeneralesTree()
         {
             this.raiz = null;
+            //this.agregar("ID","PASS","NOMBRE",1);
             
         }
         
@@ -65,6 +66,7 @@ public class GeneralesTree {
         public String GetGenerales(ABBEesta raiz)
         {
             StringBuilder cons = new StringBuilder();
+            
             if(raiz!=null)
             {
                 

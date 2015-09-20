@@ -23,6 +23,22 @@ public class LBuses {
         this.primero= this.ultimo = null;
         
     }
+    
+    public String ModificarBus(String old,String idbus,String personas)
+        {
+            NBus modificado = this.buscar(Integer.valueOf(old));
+            if(modificado!=null)
+            {
+                modificado.setNumBus(Integer.valueOf(idbus));
+                modificado.setPersonas(Integer.valueOf(personas));
+                return "BUS MODIFICADO";
+            }
+            else
+                return "ERROR FATAL EN MODIFICAR BUS";
+            
+            
+        }
+    
     public String GetBuses()
     {
         StringBuilder cons = new StringBuilder();
@@ -38,6 +54,34 @@ public class LBuses {
             
             
             
+    }
+    public NBus BuscarParaAsignacion( int num)
+    {
+        if(!Vacia())
+        {
+            NBus resp = this.primero;
+            while(resp!=null)
+            {
+                if(resp.getNumBus()==num)
+                    break;
+                else
+                    resp = resp.getNext();
+            }
+            if(resp!=null)
+                return resp;
+            else
+            {
+               return this.Add2(num);
+            }
+            
+                
+        }
+        else
+        {
+            this.primero = new NBus(num);
+            return this.primero;
+        }
+        
     }
    
     private boolean Vacia()
@@ -79,16 +123,108 @@ public class LBuses {
             
             }
             else
-            {
+            { 
+                NBus nuevo = new NBus(num);
+                NBus mayor = this.primero;
+                while(mayor.getNumBus()<num ||mayor!=null)
+                {
+                    mayor = mayor.getNext();
+                }
+                if(mayor==null)
+                {
+                    // no hay mayores
+                    this.getUltimo().setNext(nuevo);
+                    nuevo.setBack(this.getUltimo());
+                    this.setUltimo(nuevo);
+                }
+                else
+                {
+                    if(mayor==this.primero)
+                    {
+                        this.primero.setBack(nuevo);
+                        nuevo.setNext(this.primero);
+                        this.primero = nuevo;
+                    }
+                    else
+                    {
+                        nuevo.setNext(mayor);
+                        nuevo.setBack(mayor.getBack());
+                        mayor.getBack().setNext(nuevo);
+                        mayor.setBack(nuevo);
+                    }
+                    
+                }
+                
+                
+                
                 this.setElementos(this.getElementos()+1);
-                getUltimo().setNext(new NBus(num));
-                getUltimo().getNext().setBack(getUltimo());
-                this.setUltimo(getUltimo().getNext());  
             
         
             }
             return "1,RUTA INGRESADA CORRECTAMENTE";
         }
+        
+        //else
+        
+        //System.out.println("DESPUES DE AGREGAR: "+this.elementos);
+            
+    }
+    
+    
+    public NBus Add2(int num)
+    {
+            if(Vacia())
+            {
+            
+                this.setElementos(this.getElementos() + 1);
+                this.primero = new NBus(num);
+                this.ultimo = this.primero;
+                return this.primero;
+            
+            }
+            else
+            {
+                
+                NBus nuevo = new NBus(num);
+                NBus mayor = this.primero;
+                while(mayor.getNumBus()<num ||mayor!=null)
+                {
+                    mayor = mayor.getNext();
+                }
+                if(mayor==null)
+                {
+                    // no hay mayores
+                    this.getUltimo().setNext(nuevo);
+                    nuevo.setBack(this.getUltimo());
+                    this.setUltimo(nuevo);
+                }
+                else
+                {
+                    if(mayor==this.primero)
+                    {
+                        this.primero.setBack(nuevo);
+                        nuevo.setNext(this.primero);
+                        this.primero = nuevo;
+                    }
+                    else
+                    {
+                        nuevo.setNext(mayor);
+                        nuevo.setBack(mayor.getBack());
+                        mayor.getBack().setNext(nuevo);
+                        mayor.setBack(nuevo);
+                    }
+                    
+                }
+                
+                
+                
+                this.setElementos(this.getElementos()+1);
+                return nuevo;
+            
+        
+            }
+            
+        
         
         //else
         

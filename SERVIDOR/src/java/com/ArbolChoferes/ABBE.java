@@ -21,6 +21,7 @@ public class ABBE {
         private ABBE iz, der, padre;
         private int _fe;
         private int _personas;
+        private LFechas fechas;
 
         public ABBE(String id,String pass,String nombre,String apellido, int ffe,int personas)
         {
@@ -33,6 +34,7 @@ public class ABBE {
             this.padre = null;
             this._fe = ffe;
             this._personas = personas;
+            this.fechas = new LFechas();
         }
         
         
@@ -321,6 +323,96 @@ public class ABBE {
             }
         }
         
+        public ABBE add(String id,String pass,String nombre,String apellido)
+        {
+            if (this.Comparador(id,this.getID()) < 0)//nick es menor que la raiz
+            {
+//                System.out.println("ENTRO QUE el ingresado es menor que la raiz,OTRO");
+                if(this.getIz()==null)
+                {
+                   this.setIz(new ABBE(id,pass,nombre,apellido,0,0));
+                   this.getIz().setPadre(this);
+                   ABBE son = this.getIz();
+                   this.setFe(this.Altura(this.getDer())-this.Altura(this.getIz()));
+                   //System.out.println("altura de " +this.getEmail() + ": "+this.getFe());
+                   if (this.getFe() ==-2)
+                   {
+                       if(son.getFe()==-1)
+                           this.RotacionII(this,son);
+                       else
+                           this.RotacionID(this,son);
+                   }
+                   return this.getIz();
+                }
+                else
+                {
+                  ABBE res = this.getIz().add(id,pass,nombre,apellido);
+//                  System.out.println("DE REGRESO A ENTRO QUE el ingresado es menor que la raiz,OTRO");
+                  ABBE son = this.getIz();
+                  this.setFe(this.Altura(this.getDer())-this.Altura(this.getIz()));
+                  //System.out.println("altura de " +this.getEmail() + ": "+this.getFe());
+                   if (this.getFe() ==-2)
+                   {
+                       if(son.getFe()==-1)
+                           this.RotacionII(this,son);
+                       else
+                           this.RotacionID(this,son);
+                   }
+                   return res;
+                  
+                
+                }
+                    
+            }
+            else if (this.Comparador(id,this.getID()) > 0)
+            {
+                //System.out.println("ENTRO QUE el ingresado es mayor que la raiz,OTRO");
+                if(this.getDer()==null)
+                {
+                   this.setDer(new ABBE(id,pass,nombre,apellido,0,0));
+                   this.getDer().setPadre(this);
+                   ABBE son = this.getDer();
+                   this.setFe(this.Altura(this.getDer())-this.Altura(this.getIz()));
+                   //System.out.println("altura de " +this.getEmail() + ": "+this.getFe());
+                   if (this.getFe() ==2)
+                   {
+                       if(son.getFe()==1)
+                           this.RotacionDD(this,son);
+                       else
+                           this.RotacionDI(this,son);
+                   }
+                   return this.getDer();
+                }
+                else
+                {
+                  ABBE res = this.getDer().add(id,pass,nombre,apellido);
+                  //System.out.println("DE REGRESO A ENTRO QUE el ingresado es mayor que la raiz,OTRO");
+                  ABBE son = this.getDer();
+                  this.setFe(this.Altura(this.getDer())-this.Altura(this.getIz()));
+                  //System.out.println("altura de " +this.getEmail() + ": "+this.getFe());
+                   if (this.getFe() ==2)
+                   {
+                       if(son.getFe()==1)
+                           this.RotacionDD(this,son);
+                       else
+                           this.RotacionDI(this,son);
+                   }
+                   return res;
+                  
+                
+                }
+                
+               
+                
+                    
+                    
+            }
+            else
+            {
+                return null;
+            }
+        }
+        
       public int Comparador(String comparado, String comparador)
         {
              //System.out.println("COMPARADO: "+comparado+",,,, COMPARADOR: "+comparador);
@@ -508,6 +600,20 @@ public class ABBE {
      */
     public void setPersonas(int _personas) {
         this._personas = _personas;
+    }
+
+    /**
+     * @return the fechas
+     */
+    public LFechas getFechas() {
+        return fechas;
+    }
+
+    /**
+     * @param fechas the fechas to set
+     */
+    public void setFechas(LFechas fechas) {
+        this.fechas = fechas;
     }
         
         

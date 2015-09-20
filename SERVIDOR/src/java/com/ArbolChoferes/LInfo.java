@@ -16,30 +16,34 @@ public class LInfo {
     
     private  NInfo primero, ultimo;
     private int elementos;
+    int id;
     public LInfo()
     {
         this.primero= this.ultimo = null;
-        
+        this.elementos=0;
+        this.id = 0;
     }
     private boolean Vacia()
     {
         return this.getPrimero()==null;
     }
    
-    public void Add(int numbus,String nomruta,String hini, String hfinal,String fecha,int id)
+    public void Add(NBus numbus,NRuta nomruta,String hini, String hfinal)
     {
         if(Vacia())
         {
             
             this.setElementos(this.getElementos() + 1);
-            this.setPrimero(new NInfo(numbus,nomruta,hini,hfinal,fecha,id));
+            id++;
+            this.setPrimero(new NInfo(numbus,nomruta,hini,hfinal,id));
             this.setUltimo(this.getPrimero());
             
         }
         else
         {
+            id++;
             this.setElementos(this.getElementos()+1);
-            getUltimo().setNext(new NInfo(numbus,nomruta,hini,hfinal,fecha,id));
+            getUltimo().setNext(new NInfo(numbus,nomruta,hini,hfinal,id));
             getUltimo().getNext().setBack(getUltimo());
             this.setUltimo(getUltimo().getNext());  
             

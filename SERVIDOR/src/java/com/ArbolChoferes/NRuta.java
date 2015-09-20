@@ -33,7 +33,7 @@ public class NRuta {
     }
     public String getRuta()
     {
-        return  this.getNombre()+":["+this.estaciones.getEstaciones()+"]";
+        return  this.getNombre()+":"+this.estaciones.getEstaciones()+"";
         
         
     }

@@ -13,7 +13,7 @@ public class NFecha {
     
     private String fecha;
     private NFecha next,back;
-    LInfo linformacion;
+    private LInfo linformacion;
     
     public NFecha(String Fecha)
     {
@@ -72,6 +72,20 @@ public class NFecha {
      */
     public void setBack(NFecha back) {
         this.back = back;
+    }
+
+    /**
+     * @return the linformacion
+     */
+    public LInfo getLinformacion() {
+        return linformacion;
+    }
+
+    /**
+     * @param linformacion the linformacion to set
+     */
+    public void setLinformacion(LInfo linformacion) {
+        this.linformacion = linformacion;
     }
     
     
