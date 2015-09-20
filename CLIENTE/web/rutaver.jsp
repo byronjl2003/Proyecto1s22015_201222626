@@ -4,7 +4,7 @@
     Author     : byron
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -44,6 +44,7 @@
             <a href="Admin?tip=RUTACREAR" class="btn btn-default" role = "button">Nuevo</a>
         <br>
         <br>
+        String params =  (String)request.getAttribute("rutas");
         <table class="table table-striped">
       <thead>
         <tr>
@@ -64,9 +65,9 @@
           else
           {
               String[] admins = params.split(";");
-                for(int i=0;i<admins.length;i++)
+                for(int j=0;j<admins.length;j++)
                 {
-                    String[]info = admins[i].split(":");
+                    String[]info = admins[j].split(":");
                     
                     
                 
@@ -78,7 +79,7 @@
                 
           %>
         <tr>
-          <th scope="row"><%=i+1%></th>
+          <th scope="row"><%=j+1%></th>
           <td> <%=info[0]%> </td>
           <td><%=info[1]%></td>
          
